@@ -93,10 +93,6 @@ a:hover{
     margin-bottom: 20px;
 }
 
-.article a:hover{
-    color: rgb(61, 174, 255);
-    text-decoration: none;
-}
 
 .article p{
     padding: 10px;
