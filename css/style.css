@@ -1,4 +1,12 @@
 *{
-    background-color: rgb(141, 18, 18);
+    background-color: rgb(218, 131, 131);
     font-size: 20px;
+}
+
+a{
+    color: blue;
+}
+
+a:hover{
+    color: red;
 }

@@ -10,6 +10,17 @@ html, body{
     font-size: 20px;
 }
 
+.boton{
+    background-color: rgb(37, 41, 72);
+    color: rgb(0, 0, 0);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    position: absolute;
+    top: 50px;
+    left: 60px;
+}
 .container-main{
     margin: 2rem;
     background-color: rgb(67, 80, 102);
@@ -135,14 +146,4 @@ footer{
     width: fit-content;
 }
 
-.boton{
-    background-color: rgb(0, 0, 0);
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-    position: fixed;
-}
+
