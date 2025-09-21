@@ -77,6 +77,32 @@ a:hover{
     font-size: 25px;
 }
 
+.container-body h3{
+    text-align: left;
+    color: rgb(255, 255, 255);
+    padding: 10px;
+    font-size: 20px;
+}
+
+.container-body {
+    padding: 10px;
+    font-size: 18px;
+}
+
+.article{
+    margin-bottom: 20px;
+}
+
+.article a:hover{
+    color: rgb(61, 174, 255);
+    text-decoration: none;
+}
+
+.article p{
+    padding: 10px;
+    font-size: 18px;
+}
+
 .icono img {
   width: 100%;
   max-width: 30px;
@@ -108,8 +134,7 @@ footer{
     background-color: rgb(37, 41, 72);
     color: white;
     border-radius: 8px;
-    font-size: 20px;
+    font-size: 18px;
     margin-top: 20px;
     width: fit-content;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
