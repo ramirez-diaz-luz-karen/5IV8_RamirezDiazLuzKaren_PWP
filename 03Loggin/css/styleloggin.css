@@ -14,8 +14,8 @@ body{
 }
 
 .user-login{
-    background-color: rgb(105, 65, 125);
-    width: 700px;
+    background-color: rgb(255, 7, 28);
+    width: 600px;
     height: 40px;
     border-radius: 10px solid black;
     margin-top: 10%;
@@ -23,13 +23,14 @@ body{
     align-items: center;;
 }
 
-.titulo{
+.user-login h1{
     text-align: center;
-    font-size: 15px;
+    font-size: 25px;
     font-family: 'Times New Roman', Times, serif;
     padding-top: 5px;
+    padding-bottom: 10px;
     text-transform: uppercase;
-    color: rgb(46, 177, 34);
+    color: rgb(25, 249, 4);
 }
 
 .user-id h2{
@@ -56,7 +57,6 @@ body{
     margin-left: 50px;
     margin-right: 5px;
     padding-left: 5px;
-    margin-top: 5px;
 }
 
 .password input{
@@ -64,15 +64,16 @@ body{
     height: 25px;
     border: 2px solid rgb(73, 250, 79);
     border-radius: 10px;
-    margin-left: 20px;
-    margin-bottom: 20px;
+    margin-left: 4px;
+    margin-bottom: 10px;
     margin-top: 10px;
 }
 
 .boton button{
     border-radius: 15px;
     width: 150px;
-    height: 60px;
+    height: 40px;
+    margin: 10px;
 }
 
 .boton p{
@@ -92,10 +93,19 @@ body{
 }
 
 a{
-    margin-top: 10px;
-    float: left;
-    margin-left: 60px;
+    margin-top: 5px;
+    float: center;
+    margin-left: px;
     color: rgb(12, 237, 233);
     text-decoration: none;
 
+}
+
+.index{
+    position: absolute;
+    top: 40px;
+    left: 80px;
+    background-color: rgb(255, 7, 28);
+    padding-bottom: 15px;
+    font-size: 20px;
 }
