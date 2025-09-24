@@ -6,7 +6,7 @@
 html, body{
     background-color: rgb(157, 157, 157);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     font-size: 20px;
 }
 
@@ -46,14 +46,14 @@ header{
 }
 
 a{
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     font-weight: bold;
     padding: 0 10px; 
     text-decoration: none;
 }
 
 a:hover{
-    color: rgb(255, 255, 255);
+    color: rgb(122, 185, 240);
 }
 
 .info-personal{
