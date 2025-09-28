@@ -2,7 +2,14 @@
     background-color: #121212;
     padding: 0%;
     margin: 0%;
-    text-align: center;
+}
+
+body{
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 :root {
@@ -13,20 +20,33 @@
   --font-body: 'Roboto', sans-serif;
 }
 
-.contenedor{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+.caja{
+    width: 500px;
+    max-width: 90%;
+    background-color: #063E66;
+    padding: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    text-align: center;
 }
 
-.caja{
-    width: 60%;
-    height: 400px;
-    overflow: scroll;
-    background-color: #063E66;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+/* mostrar pestaña activa según input */
+#tab1:checked ~ .caja .pestaña1,
+#tab2:checked ~ .caja .pestaña2,
+#tab3:checked ~ .caja .pestaña3 {
+    display: block;
+}
+
+
+input[type="radio"]{
+    display: none;
+}
+
+h2{
+    font-family: var(--font-title);
+    font-size: 2rem;
+    color: #0A75C2;
+    margin-bottom: 1rem;
 }
 
 .pestañas{
@@ -41,16 +61,40 @@
     background-color: #2A2A2A;
     color: #ffffff;
     cursor: pointer;
+    display: none;
 }
 
 .pestaña-activa{
     background-color: #1B3A57;
 }
 
-.cont .pestaña-activa{
-    display: block;
+
+.info{
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    color: #ffffff;
+    text-align: right;
+    background-color: #063E66;
+    padding: 10px;
 }
 
-.cont .pestaña{
-    display: none;
+.link_practica{
+    text-decoration: none;
+    font-family: var(--font-impact);
+    font-size: 1.5rem;
+    color: #0A75C2;
+}
+
+.link_practica:hover{
+    text-decoration: none;
+}
+
+img{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
 }

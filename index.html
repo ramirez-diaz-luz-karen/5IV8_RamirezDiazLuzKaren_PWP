@@ -1,76 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejemplo de manejador de versiones</title>
-    <link rel="stylesheet" href="Portafolio css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Oswald:wght@400;600;700&family=Roboto:ital,wght@0,400;0,500;1,400&family=Roboto+Condensed:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portafolio de Luz Karen</title>
+  <link rel="stylesheet" href="Portafolio css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Oswald:wght@400;600;700&family=Roboto:ital,wght@0,400;0,500;1,400&family=Roboto+Condensed:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header>Luz Karen Ramirez Diaz</header>  
-  <br>
+  <header>Luz Karen Ramírez Díaz</header>
   <p>Portafolio de evidencias para la asignatura de PW y Pruebas</p>
 
-  <br>
-  <p>Aqui vamos a crear un portafolio para cada practica.</p>
-  <p>Cosas para tu Examen Pt1
-    Queremos que tu fortafolio sea hermoso y kawaii, 100% personalizado, se admite TODO <br>
-    Deberan de aplicar las reglas de creación de esrilos de acuerdo a material desing <br>
-    Paleta de colores: 3 colores si no sabemos mucho
-    Fuente o tipografia: (tipografías google fonts)
-  </p>
-  <br>
-
-  <!--Espacio para hacer scroll a las actividades -->
+  <!-- Contenedor general -->
   <div class="contenedor">
+
+    <!-- Inputs invisibles para controlar pestañas -->
+    <input type="radio" id="tab1" name="tab" checked>
+    <input type="radio" id="tab2" name="tab">
+    <input type="radio" id="tab3" name="tab">
+
+    <!-- botones hechos con etiquetas -->
+    <div class="botones">
+      <label for="tab1">1</label>
+      <label for="tab2">2</label>
+      <label for="tab3">3</label>
+    </div>
+
+    <!-- Caja con las pestañas -->
     <div class="caja">
-      <div class="pestañas">
-        <div class="pestaña-activa" onclick="showTab(0)">Practica 1</div> <!-- Funcion para mostrar la pestaña indicada -->
-        <div class="pestaña" onclick="showTab(1)">Practica 2</div>
-        <div class="pestaña" onclick="showTab(2)">Practica 3</div>
+      <div class="pestaña pestaña1">
+        <img src="Portafolio css/markus-winkler-XKKuY4ottJ0-unsplash.jpg" alt="fondo">
+        <div class="info">
+          <a href="01Curriculim/Perfil.html" target="_blank" class="link_practica">Curriculum</a>
+          <p>Descripción</p>
+        </div>
+      </div>
+
+      <div class="pestaña pestaña2">
+        <img src="Portafolio css/hal-gatewood-weRQAu9TA-A-unsplash.jpg" alt="fondo">
+        <div class="info">
+          <a href="02PrimerosPasos/estructura.html" target="_blank" class="link_practica">Primeros Pasos</a>
+          <p>Descripción</p>
+        </div>
+      </div>
+
+      <div class="pestaña pestaña3">
+        <img src="Portafolio css/pexels-pixabay-163042.jpg" alt="fondo">
+        <div class="info">
+          <a href="03Loggin/inicio.html" target="_blank" class="link_practica">Login</a>
+          <p>Descripción</p>
         </div>
       </div>
     </div>
-
-  <!-- Pestaña que se muestra -->
-  <div class="cont pestaña-activa">
-    <div class="info">
-    <a href="01Curriculim/Perfil.html">Curriculum</a>
-    <p>descripcion</p>
-    </div>
-    </div>
-    <div class="cont pestaña">
-      <div class="info">
-        <a href="02PrimerosPasos/estructura.html">Primeros Pasos</a>
-        <p>descripcion</p>
-      </div>
-    </div>
-    <div class="cont pestaña">
-      <div class="info">
-        <a href="03Loggin/inicio.html">Login</a>
-        <p>descripcion</p>
-      </div>
-    </div>
   </div>
-
-  <!-- Codigo para poder cambiar de pestañas -->
-  <script>
-    function showTab(index) {
-      const tabs = document.querySelectorAll('.pestaña');
-      const contents = document.querySelectorAll('.cont');
-
-      tabs.forEach((tab, i) => {
-        if (i === index) {
-          tab.classList.add('pestaña-activa');
-          contents[i].classList.add('pestaña-activa');
-        } else {
-          tab.classList.remove('pestaña-activa');
-          contents[i].classList.remove('pestaña-activa');
-        }
-      });
-    }
-  </script>
-  
 </body>
 </html>
