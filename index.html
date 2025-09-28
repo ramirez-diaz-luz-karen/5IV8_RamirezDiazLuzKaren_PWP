@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ejemplo de manejador de versiones</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="Portafolio css/style.css">
 </head>
 <body>
   <header>Luz Karen Ramirez Diaz</header>  
   <br>
-  <p>Este es el portafolio de evidencias para la asignatura de PW y Pruebas</p>
+  <p>Portafolio de evidencias para la asignatura de PW y Pruebas</p>
 
   <br>
   <p>Aqui vamos a crear un portafolio para cada practica.</p>
@@ -20,21 +20,56 @@
     Fuente o tipografia: (tipografías google fonts)
   </p>
   <br>
-  <table class="container-table">
-        <td>Practica</td>
-        <td>Descripción</td>
-    <tr>
-        <td><a href="01Curriculim/Perfil.html">Práctica 1. Curriculum</a></td>
-        <td>aqui va la descripción</td>
-    </tr>
-    <tr>
-      <td><a href="02PrimerosPasos/estructura.html">Práctica 2. Primeros Pasos</a></td>
-      <td>aqui va la descripción</td>
-    </tr>
-    <tr>
-      <td><a href="03Loggin/inicio.html">Práctica 3. Login</a></td>
-      <td>aqui va la descripción</td>
-  </table>
+
+  <!--Espacio para hacer scroll a las actividades -->
+  <div class="contenedor">
+    <div class="caja">
+      <div class="pestañas">
+        <div class="pestaña-activa" onclick="showTab(0)">Practica 1</div> <!-- Funcion para mostrar la pestaña indicada -->
+        <div class="pestaña" onclick="showTab(1)">Practica 2</div>
+        <div class="pestaña" onclick="showTab(2)">Practica 3</div>
+        </div>
+      </div>
+    </div>
+
+  <!-- Pestaña que se muestra -->
+  <div class="cont pestaña-activa">
+    <div class="info">
+    <a href="01Curriculim/Perfil.html">Curriculum</a>
+    <p>descripcion</p>
+    </div>
+    </div>
+    <div class="cont pestaña">
+      <div class="info">
+        <a href="02PrimerosPasos/estructura.html">Primeros Pasos</a>
+        <p>descripcion</p>
+      </div>
+    </div>
+    <div class="cont pestaña">
+      <div class="info">
+        <a href="03Loggin/inicio.html">Login</a>
+        <p>descripcion</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Codigo para poder cambiar de pestañas -->
+  <script>
+    function showTab(index) {
+      const tabs = document.querySelectorAll('.pestaña');
+      const contents = document.querySelectorAll('.cont');
+
+      tabs.forEach((tab, i) => {
+        if (i === index) {
+          tab.classList.add('pestaña-activa');
+          contents[i].classList.add('pestaña-activa');
+        } else {
+          tab.classList.remove('pestaña-activa');
+          contents[i].classList.remove('pestaña-activa');
+        }
+      });
+    }
+  </script>
   
 </body>
 </html>
