@@ -5,4 +5,52 @@
     text-align: center;
 }
 
+:root {
+  --font-title: 'Oswald', sans-serif;
+  --font-subtitle: 'Bebas Neue', sans-serif;
+  --font-impact: 'Anton', sans-serif;
+  --font-italic: 'Roboto Condensed', sans-serif;
+  --font-body: 'Roboto', sans-serif;
+}
 
+.contenedor{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.caja{
+    width: 60%;
+    height: 400px;
+    overflow: scroll;
+    background-color: #063E66;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.pestañas{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.pestaña{
+    margin: 0 10px;
+    padding: 10px 20px;
+    background-color: #2A2A2A;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.pestaña-activa{
+    background-color: #1B3A57;
+}
+
+.cont .pestaña-activa{
+    display: block;
+}
+
+.cont .pestaña{
+    display: none;
+}
