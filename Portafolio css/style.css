@@ -45,7 +45,7 @@ body{
 .caja{
     width: 500px;
     max-width: 90%;
-    height: 400px;
+    height: 450px;
     background-color: #063E66;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
     position: relative; /*permite que los elementos hijos se posicionen rtelativos al contenedor y no al doc*/
@@ -91,12 +91,16 @@ input[type="radio"]{
 
 .info{
     position: absolute;
-    bottom: 10px;
     right: 10px;
     text-align: right;
     background-color: #063E66;
     padding: 10px;
     text-align: right;
+}
+
+p{
+    font-size: 0.9rem;
+    color: #ffffff;
 }
 
 .link_practica{
@@ -108,17 +112,6 @@ input[type="radio"]{
 
 .link_practica:hover{
     text-decoration: none;
-}
-
-
-.info{
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    color: #ffffff;
-    text-align: right;
-    background-color: #063E66;
-    padding: 10px;
 }
 
 .link_practica{
