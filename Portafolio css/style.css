@@ -29,7 +29,7 @@
     padding: 40px;
     gap: 10px;
     overflow: hidden;
-    min-height: 300px;
+    min-height: 400px;
     height: auto;
 }
 
@@ -52,7 +52,7 @@
 
 .img-presentacion h2{
     position: absolute;
-    bottom: 40px;
+    bottom: 70px;
     width: 100%;
     text-align: center;
     font-size: 2rem;
