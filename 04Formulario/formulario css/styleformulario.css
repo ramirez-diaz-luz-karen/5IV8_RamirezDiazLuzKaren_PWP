@@ -47,6 +47,7 @@ body{
     margin-left: 10px;
     margin-right: 10px;
     color: #cecece;
+    width: 90%;
 }
 
 .introduccion ul{
@@ -58,6 +59,7 @@ body{
     margin-right: 10px;
     text-align: left;
     padding: 20px;
+    width: 90%;
 }
 
 .container-form{
@@ -80,7 +82,7 @@ body{
 .index{
     font-family: var(--font-impact);
     font-size: 1.5rem;
-    background-color: #0A75C2;
+    background-color: #063E66;
     color: #572222;
     border-radius: 10px;
     padding: 8px 10px;
@@ -91,11 +93,12 @@ body{
 
 .index a{
     text-decoration: none;
-    color:#121212;
+    color:#8BC3E8;
     cursor: pointer;
 }
 
 .index a:hover{
     text-decoration: none;
-    color: #993333;
+    color: #572222;
+    background-color: #ffffff;
 }
