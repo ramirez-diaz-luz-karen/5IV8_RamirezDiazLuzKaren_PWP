@@ -1,5 +1,5 @@
 /*
-enma script
+en  javascript
 Javascript es un lenguaje multiparadigma
 Acepta la programación funcional, estructurada, POO, Eventos
 
