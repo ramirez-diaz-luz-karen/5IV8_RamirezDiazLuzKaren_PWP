@@ -38,4 +38,16 @@
     text-align: justify;
     margin-left: 10px;
     margin-right: 10px;
+    color: #cecece;
+}
+
+.introduccion ul{
+    font-family: var(--font-italic);
+    font-size: 1rem;
+    margin-top: 10px;
+    background-color: #66AEE0;
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: left;
+    padding: 20px;
 }
