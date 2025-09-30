@@ -83,9 +83,9 @@ body{
     background-color: #0A75C2;
     color: #572222;
     border-radius: 10px;
-    padding: 8px;
+    padding: 8px 10px;
     position: absolute;
-    top: 10px;
+    top: 20px;
     left: 10px;
 }
 
@@ -95,7 +95,7 @@ body{
     cursor: pointer;
 }
 
-a:hover{
+.index a:hover{
     text-decoration: none;
     color: #993333;
 }
