@@ -65,5 +65,14 @@ body{
     margin-bottom: 20px;
     background-color: #2E0F0F;
     color: #cecece;
-    padding: 8px;
+    padding: 10px;
+}
+
+.container-form input{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.container-form label{
+    font-family: var(--font-impact);
 }
