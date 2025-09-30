@@ -151,7 +151,8 @@ body{
 /* mostrar pestaña activa según input */
 #tab1:checked ~ .caja .pestaña1,
 #tab2:checked ~ .caja .pestaña2,
-#tab3:checked ~ .caja .pestaña3 {
+#tab3:checked ~ .caja .pestaña3, 
+#tab4:checked ~ .caja .pestaña4 {
     display: block;
 }
 
