@@ -12,13 +12,21 @@
     --font-body: 'Roboto', sans-serif;
 }
 
+body{
+    background-color: #2E2E2E; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
 .introduccion{
     display: flex;
     position: relative;
     text-align: center;
     align-items: center;
     flex-direction: column;
-    background-color: #0A75C2;
 }
 
 .introduccion header{
@@ -50,4 +58,12 @@
     margin-right: 10px;
     text-align: left;
     padding: 20px;
+}
+
+.container-form{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    background-color: #2E0F0F;
+    color: #cecece;
+    padding: 8px;
 }
