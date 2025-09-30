@@ -116,7 +116,7 @@ body{
     left: 20px;
     width: 80px;
     height: 30px;
-    background-color: #0A75C2;
+    background-color: #063E66;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -130,12 +130,14 @@ body{
 
 .figma-cont a{
     text-decoration: none;
-    color: #ffffff;
+    color: #8BC3E8;
     font-family: var(--font-impact);
 }
 
 .figma-cont a:hover{
+    text-decoration: none;
     color: #572222;
+    background-color: #ffffff;
 }
 
 .caja{
