@@ -12,3 +12,11 @@
     flex-direction: column;
     background-color: #0A75C2;
 }
+
+:root{
+    --font-title: 'Oswald', sans-serif;
+    --font-subtitle: 'Bebas Neue', sans-serif;
+    --font-impact: 'Anton', sans-serif;
+    --font-italic: 'Roboto Condensed', sans-serif;
+    --font-body: 'Roboto', sans-serif;
+}
