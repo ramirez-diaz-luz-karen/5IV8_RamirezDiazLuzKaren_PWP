@@ -69,10 +69,10 @@ if (!allvalido) {
 var correo = formulario.correo.value;
 var regexCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 if (!regexCorreo.test(correo)) {
-   alert("Ingrese un correo electrónico válido");
-   formulario.correo.focus();
-   return false;
-//}
+    alert("Ingrese un correo electrónico válido");
+    formulario.correo.focus();
+    return false;
+}
 
 } 
 
@@ -81,4 +81,3 @@ if (!regexCorreo.test(correo)) {
 //texto.texto@texto.texto 
 //texto.texto@texto.texto 
 
-}
