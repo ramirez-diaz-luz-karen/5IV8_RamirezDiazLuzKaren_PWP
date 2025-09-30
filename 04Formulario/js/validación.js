@@ -15,9 +15,16 @@ if (formulario.nombre.value.length < 3 ) {
     return false;
 }
 // Validación letras
-var checkStr = formulario.nombre.value;
-var abcOK = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ" + "abcdefghijklmnñopqrstuvwxyz";
-var allvalido = true;
+// var checkStr = formulario.nombre.value;
+// var abcOK = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ" + "abcdefghijklmnñopqrstuvwxyz";
+// var allvalido = true;
+
+var checkStr = /^[A-Za-zÑñÁÉÍÓÚáéíóú\s]+$/;
+if(!checkStr.test(formulario.nombre.value)){
+    alert("Ingrese un nombre válido solo con letras");
+    formulario.nombre.focus();
+    return false;
+}
 
 // Comparar cadena de nombre con el resultado de abc
 for (var i = 0; i < checkStr.length; i++) {
