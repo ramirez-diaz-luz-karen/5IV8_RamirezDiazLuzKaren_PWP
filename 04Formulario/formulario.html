@@ -6,18 +6,21 @@
     <script src="./js/validacion.js"></script>
 </head>
 <body>
+    <div class="introducción">
+        <header>Formulario</header>
+    
     <p>Todos los formularios en la web, manejan metodos para el envio de las diferente peticiones que realiza el usuario. Considerando la arquitectura cliente-servidor, el manejo de las peticiones se hacen por medio del protocolo http y actualmente por https, cada peticion debe ser atendida en tiempo de respuesta conforme al modelo TCP/IP. Los metodos principales de los formularios son
     <ul>
         <li> <strong>GET:</strong> Este metodo se encarga de enviar la informacion del formulario por medio de la salida estandar (conocido como url), del navegador, esto 
             propicia que puedan existir inyecciones de codigo realizando violaciones a la seguridad del sistema.</li>
 
-    <li> <strong>Post: </strong> Este metodo se encarga de enviar la información para poder registrar un cambio o un nuevo registro dentro del sistema enviandola igual 
+    <li><strong>Post: </strong> Este metodo se encarga de enviar la información para poder registrar un cambio o un nuevo registro dentro del sistema enviandola igual 
         por el método estandar pero mediante un ocultamiento, esto significa que no es visible para el usuario. Lo que nos ofrece un mayor grado de 
         seguridad en el manejo de la información</li>
 
     </ul></p>
     <br>
-    <p>En resumen los métodos son:: 
+    En resumen los métodos son:: 
         <li>
             <ul>Get: sirve para enviar y realizar operaciones de lectura o consulta</ul>
             <ul>Post: Sirve para enviar información de un recurso al servidor con el fin de registrarlos</ul>
@@ -25,8 +28,8 @@
             <ul>Put: Sirve para almacenar la información de un recurso particular y conectarse al servicio para realizar la actualización</ul>
             <ul>Head: Sirve para regresar el codigo de puesta de cualquier cabecera HTTP asociada a un recurso</ul>
         </li>
-    </p>
-
+    
+    </div>
     <div class="container-form">
         <form method="post" id="formulario" onsubmit="return validar(this)" name="formulario" action="about:blank"> 
             <label for="nombre">Nombre: </label>
