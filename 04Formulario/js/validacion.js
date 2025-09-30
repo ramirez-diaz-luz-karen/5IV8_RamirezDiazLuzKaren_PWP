@@ -19,7 +19,7 @@ function validar (formulario) {
 // var abcOK = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ" + "abcdefghijklmnñopqrstuvwxyz";
 // var allvalido = true;
 
-var checkStr = /^[A-Za-zÑñÁÉÍÓÚáéíóú\s]+$/;
+var checkStr = /^[A-Za-zÑñÁÉÍÓÚáéíóú\s]{3,}$/;
 if(!checkStr.test(formulario.nombre.value)){
     alert("Ingrese un nombre válido solo con letras");
     formulario.nombre.focus();
