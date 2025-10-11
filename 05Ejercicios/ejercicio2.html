@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2</title>
+</head>
+<body>
+    <div class="container">
+        <form method="post" name="formulario" action=" ">
+            <label for="">
+                Formulario para calculo de dinero obtenido (comisiones del 105 +sueldo base)
+                <br>
+                <div class="container-table">
+                    <table class="table">
+                        <tr>
+                            <td>
+                                Introduce la cantidad total de tu sueldo base:
+                            </td>
+                            <td>
+                                <input type="text" name="sueldoB" id="sueldoBase" onkeypress="return validarS(event)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <input type="button" value="Calcular Comision" name="enviar" onclick="">
+                            </td>
+                        </tr>
+                        <tr>
+                            <tr>
+                                <td>
+                                    Introduce la cantidad total de ventas realizadas en el mes:
+                                </td>
+                                <td>
+                                    <input type="text" name="comisiones" id="comisionesTotales" onkeypress="">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <input type="button" name="Calcular Extra" name="enviar" onclick="">
+                                </td>
+                            </tr>
+                            <td>
+                                Su saldo total con el extra generado por las comisiones es de: 
+                            </td>
+                            <td>
+                                <input type="text" name="sueldoTotal" id="sueldo" readonly="readonly" class="input_text">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <input type="button" value="Borrar Datos" name="borrar" onclick="Borrar()">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </label>
+        </form>      
+    </div>
+ <script src="./js/funcionesE2.js"></script>   
+</body>
+</html>
