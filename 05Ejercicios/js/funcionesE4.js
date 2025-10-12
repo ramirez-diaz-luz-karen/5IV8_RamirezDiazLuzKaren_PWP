@@ -41,12 +41,12 @@ function calcuarCalificacionFinal(){
 
     const calificacionFinal = (parseo1 * 0.55) + (parseo2 * 0.30) + (parseo3 * 0.15);
 
-    document.getElementById("calificacionT").value = calificacionFinal.toFixed(2);
+    document.getElementById("calificacionF").value = calificacionFinal.toFixed(2);
 }
 
 function Borrar(){
     document.getElementById("calificacionP").value = "";
-    document.getElementById("examenP").value = "";
+    document.getElementById("examenF").value = "";
     document.getElementById("trabajoF").value = "";
     document.getElementById("calificacionF").value = "";
 }
