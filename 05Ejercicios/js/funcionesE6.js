@@ -35,9 +35,25 @@ function mostrarEdad() {
     return;
   }
 
-  document.getElementById('resultado').value = edad + " años";
-  document.getElementById('gifContainer').style.display = 'block';
+  const resultado = document.getElementById('resultado');
+  const gif = document.getElementById('gifContainer');
+
+  resultado.textContent = `Edad ingresada: ${edad} años.`;
+  resultado.classList.remove('oculto');
+  resultado.classList.add('visible', 'desvanecer');
+
+  gif.classList.remove('oculto');
+  gif.classList.add('visible', 'desvanecer');
+
+  setTimeout(() => {
+    resultado.classList.remove('visible', 'desvanecer');
+    resultado.classList.add('oculto');
+    gif.classList.remove('visible', 'desvanecer');
+    gif.classList.add('oculto');
+    resultado.textContent = "";
+  }, 5000);
 }
+
 
 function Borrar() {
     document.formulario.reset();
