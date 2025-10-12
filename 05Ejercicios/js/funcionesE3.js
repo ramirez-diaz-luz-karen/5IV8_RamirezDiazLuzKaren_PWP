@@ -1,4 +1,4 @@
-function valdarC(e){
+function validarC(e){
     const input = e.target; /*Apunta al elemento HTML que disparó el evento */
     const valor = input.value; /*Extrae el contenido actual del campo antes de que se agregue la nueva tecla.*/
     var teclado = (document.all)? e.keyCode : e.which; /*Este comando sirve para saber que tecla fue presionada, los 3 ((document.all)? -Internet Explorer- e.keyCode -nav antiguos- : e.which -nav modernos como chrome y firefox-) sirven para lo mismo solo que en distintos navegadores*/
@@ -20,7 +20,7 @@ function valdarC(e){
 }
 
 function calcularPagoTotal(){
-    var monto = document.getElementById(compraT);
+    var monto = document.getElementById("compraT").value;
     var parseo = parseFloat(monto);
 
     if (isNaN(parseo)) {

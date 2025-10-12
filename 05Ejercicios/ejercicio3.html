@@ -17,9 +17,11 @@
                             <td>Ingresa el total de tu compra:</td>
                             <td>
                                 <input type="text" id="compraT" name="compraTotal" onkeypress="return validarC(event)">
-                            </td>
+                            </td>                           
+                        </tr>
+                        <tr>
                             <td>
-                                <input type="button" value="Monto Total" name="enviar" onclick="calcularPagoFinal()">
+                                <input type="button" value="Monto Total" name="enviar" onclick="calcularPagoTotal()">
                             </td>
                         </tr>
                         <tr>
@@ -30,7 +32,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <input type="button" name="Borrar Datos" name="borrar" onclick="Borrar()">
+                                <input type="button" value="Borrar Datos" name="borrar" onclick="Borrar()">
                             </td>
                         </tr>
                     </table>
@@ -38,6 +40,6 @@
             </label>
         </form>      
     </div>
- <script src="./js/funcionesE1.js"></script>   
+ <script src="./js/funcionesE3.js"></script>   
 </body>
 </html>
