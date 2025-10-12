@@ -22,26 +22,20 @@
                             </td>
                         </tr>
                         <tr>
-                            <td></td>
                             <td>
-                                <input type="button" value="Calcular Comision" name="enviar" onclick="">
-                            </td>
-                        </tr>
-                        <tr>
-                            <tr>
-                                <td>
                                     Introduce la cantidad total de ventas realizadas en el mes:
                                 </td>
                                 <td>
-                                    <input type="text" name="comisiones" id="comisionesTotales" onkeypress="">
+                                    <input type="number" name="ventas" id="ventasMes" min="0" step="1">
                                 </td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>
-                                    <input type="button" name="Calcular Extra" name="enviar" onclick="">
-                                </td>
-                            </tr>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <input type="button" value="Calcular Total" name="enviar" onclick="calcularTotal()">
+                            </td>
+                        </tr>
+                        <tr>               
                             <td>
                                 Su saldo total con el extra generado por las comisiones es de: 
                             </td>

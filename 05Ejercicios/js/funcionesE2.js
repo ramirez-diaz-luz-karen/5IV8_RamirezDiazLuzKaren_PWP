@@ -20,25 +20,26 @@ function validarS(e){
 }
 
 
-function comisiones(){
-    var  valor= document.getElementsById("sueldoBase").value;
-    var valor2 = document.getElementsById("comisionesTotales").value;
+function calcularTotal(){
+    var  valor= document.getElementById("sueldoBase").value;
+    var valor2 = document.getElementById("ventasMes").value;
 
     var parseo = parseFloat(valor);
-    alert(parseo);
     var parseo2 = parseFloat(valor2);
-    alert(parseo2);
+    if (isNaN(parseo) || isNaN(parseo2)) {
+        alert("Por favor ingresa valores válidos.");
+        return;
+    }
 
-    var comision = (parseo2 * 0.01);
-    alert(comision);
+    const comisionPorVenta = parseo * 0.10;
+    const totalComisiones = parseo2 * comisionPorVenta;
+    const totalFinal = parseo + totalComisiones;
 
-    var total = comision + parseo;
-    alert(total);
-
-    document.getElementById("sueldoT").value = "$ " + total; //LIMITE A 2 DECIMALES
+    document.getElementById("sueldoT").value = "$ " + totalFinal.toFixed(2);
 }
 
 function Borrar(){
-    document.getElementById("cantidadi").value = "";
-    document.getElementById("salodoi").value = "";
+    document.getElementById("sueldoBase").value = "";
+    document.getElementById("ventasMes").value = "";
+    document.getElementById("sueldoT").value = "";
 }
