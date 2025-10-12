@@ -4,19 +4,35 @@
   <meta charset="UTF-8">
   <title>Edad directa</title>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Oswald:wght@400;600;700&family=Roboto:ital,wght@0,400;0,500;1,400&family=Roboto+Condensed:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/05Ejercicios/css/style.css">
 </head>
 <body>
-    <div class="container">
+    <div class="container-table">
         <form method="post" name="formulario" action=" ">
             <label for="">
-               <h2>Ingresa tu edad directamente</h2>
-
-                <label for="edad">Edad:</label>
-                <input type="number" id="edad" min="7" max="120"><br><br>
-                <button onclick="mostrarEdad()">Mostrar</button>
-                <p id="resultado"></p>
-                <div id="gifContainer" style="display:none;">
+               <h2>Calcular tu edad</h2>
+               <br>
+               <tr>
+                <td>
+                    Ingresa tu edad:
+                </td>
+                <td>
+                    <input type="number" id="edad" min="7" max="120"><br><br>
+                </td>
+               </tr>
+               <tr>
+                <td>
+                    <input type="button" value="Calcular" onclick="mostrarEdad()">
+                </td>
+               </tr> 
+               <tr>
+                <td>
+                    <input type="text" id="resultado" readonly="readonly" class="input_text">
+                </td> 
+               </tr>
+                             
+                
+                <div id="container-gif" style="display:none;">
                     <img src="https://media.giphy.com/media/3o6ZsY8TtFqvWZgDLa/giphy.gif" alt="Batman bailando" width="250">
                     <p>Fuente: <a href="https://giphy.com/gifs/3o6ZsY8TtFqvWZgDLa" target="_blank">Giphy / Warner Bros.</a></p>
 
@@ -30,7 +46,10 @@
         </form>      
     </div> 
   <br>
-  <a href="ejercicio6.html">← Volver al menú</a>
-   <script src="./js/funcionesE6.js"></script>   
+  <div class="menu">
+    <a href="ejercicio6.html">← Volver al menú</a>
+  </div>
+  
+ <script src="/05Ejercicios/js/funcionesE6.js"></script>   
 </body>
 </html>

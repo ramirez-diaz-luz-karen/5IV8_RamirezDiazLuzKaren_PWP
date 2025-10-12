@@ -4,17 +4,31 @@
   <meta charset="UTF-8">
   <title>Edad por fecha</title>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Oswald:wght@400;600;700&family=Roboto:ital,wght@0,400;0,500;1,400&family=Roboto+Condensed:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/05Ejercicios/css/style.css">
 </head>
 <body>
+<div class="container-table">
   <h2>Calcular edad por fecha de nacimiento</h2>
-  <label for="fecha">Fecha de nacimiento:</label>
-  <input type="date" id="fecha"><br><br>
-  <button onclick="calcularEdad()">Calcular</button>
-  <p id="resultado"></p>
-  <br>
-  <a href="ejercicio6.html">← Volver al menú</a>
+  <tr>
+    <td>
+      <label for="fecha">Fecha de nacimiento:</label>
+    </td>
+    <td><input type="date" id="fecha"><br><br></td>
+    <tr>
+      <td>
+        <button onclick="calcularEdad()">Calcular</button>
+      </td>
+      <td>
+        <p id="resultado"></p>
+      </td>
+    </tr>
+  </tr>   
+</div>
 
-<script src="./js/funcionesE6.js"></script>
+<div class="menu">
+<a href="ejercicio6.html">← Volver al menú</a>
+</div> 
+
+ <script src="/05Ejercicios/js/funcionesE6.js"></script>   
 </body>
 </html>

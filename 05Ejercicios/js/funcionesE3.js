@@ -28,7 +28,7 @@ function calcularPagoTotal(){
         return;
     }
 
-    const descuento = parseo * 0.015;
+    const descuento = parseo * 0.15;
     const total = parseo - descuento;
 
     document.getElementById("montoT").value = "$ " + total.toFixed(2);

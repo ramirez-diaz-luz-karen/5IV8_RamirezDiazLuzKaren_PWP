@@ -22,5 +22,5 @@ function interes(){
 
 function Borrar(){
     document.getElementById("cantidadi").value = "";
-    document.getElementById("salodoi").value = "";
+    document.getElementById("saldoi").value = "";
 }

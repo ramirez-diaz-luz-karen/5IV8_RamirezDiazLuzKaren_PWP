@@ -35,7 +35,7 @@ function mostrarEdad() {
     return;
   }
 
-  document.getElementById('resultado').textContent = `Edad ingresada: ${edad} años.`;
+  document.getElementById('resultado').value = edad + " años";
   document.getElementById('gifContainer').style.display = 'block';
 }
 
