@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+</head>
+<body>
+    <div class="container">
+        <form method="post" name="formulario" action=" ">
+            <label for="">
+                <h1>Formulario para calcular la edad de una persona:</h1>    
+                <br>
+                <div class="container-table">
+                    <table class="table">
+                        <tr>
+                            <td>
+                                <label> Como quieres calcular la edad?</label>
+                                <input type="radio" name="metodo" value="fecha" onchange="mostrarMetodo()"> Por fecha de nacimiento<br>
+                                <input type="radio" name="metodo" value="edad" onchange="mostrarMetodo()"> Ingresar edad directamente<br><br>
+                            </td>
+                        </tr>
+                        <tr id="campoFecha" class="oculto">
+                        <td>
+                            <label for="fechaNacimiento">Fecha de nacimiento:</label>
+                            <input type="date" id="fechaNacimiento" name="fechaNacimiento"><br><br>
+                        </td>
+                    </tr>
+                    <tr id="campoEdad" class="oculto">
+                        <td>
+                            <label for="edadDirecta">Edad:</label>
+                            <input type="number" id="edadDirecta" name="edadDirecta" min="0"><br><br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="button" value="Calcular Edad" onclick="calcularEdad()">
+                        </td>
+                        <tr>
+                            <td>
+                                <input type="button" value="Borrar Datos" name="borrar" onclick="Borrar()">
+                            </td>
+                        </tr>
+                    </table>
+                    <div id="resultado"></div>
+                <div id="gifContainer" class="gif oculto">
+                    <img src="" alt="GIF" width="250">
+                </div>
+                </div>
+            </label>
+        </form>      
+    </div>
+ <script src="./js/funcionesE6.js"></script>   
+</body>
+</html>
