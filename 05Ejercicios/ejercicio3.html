@@ -16,16 +16,21 @@
                         <tr>
                             <td>Ingresa el total de tu compra:</td>
                             <td>
-                                <input type="text" id="compraT" name="compraTotal" onkeypress="">
+                                <input type="text" id="compraT" name="compraTotal" onkeypress="return validarC(event)">
                             </td>
                             <td>
-                                <input type="button" value="Monto Total" name="enviar" onclick="">
+                                <input type="button" value="Monto Total" name="enviar" onclick="calcularPagoFinal()">
                             </td>
                         </tr>
                         <tr>
                             <td>Su monto total a pagar es de:</td>
                             <td>
                                 <input type="text" id="montoT" name="montoTotal" readonly="readonly" class="input_text">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="button" name="Borrar Datos" name="borrar" onclick="Borrar()">
                             </td>
                         </tr>
                     </table>
