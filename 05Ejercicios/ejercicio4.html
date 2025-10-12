@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+</head>
+<body>
+    <div class="container">
+        <form method="post" name="formulario" action=" ">
+            <label for="">
+                <h1>Formulario para el descuento del 15% sobre el total de mi compra</h1>    
+                <br>
+                <div class="container-table">
+                    <table class="table">
+                        <tr>
+                            <td>Ingresa tu promedio total de calificaciones parciales:</td>
+                            <td>
+                                <input type="text" id="calificacionP" name="calificacionParcial" onkeypress="return validarC(event)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Ingresa tu calidicacion del examen final:</td>
+                            <td>
+                                <input type="text" id="examenF" name="examenFinal" onkeypress="return validarC(event)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Ingresa la calificacion de tu trabajo final:</td>
+                            <td>
+                                <input type="text" id="trabajoF" name="trabajoFinal" onkeypress="return validarC(event)">
+                            </td>
+                        </tr>
+                        <tr>                           
+                            <td>
+                                <input type="button" value="Calcular Calificacion Final" name="enviar" onclick="calcuarCalificacionFinal()">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Su calificacion final de algoritmia es de:</td>
+                            <td>
+                                <input type="text" id="calificacionF" name="calificacionFinal" readonly="readonly" class="input_text">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </label>
+        </form>      
+    </div>
+ <script src="./js/funcionesE3.js"></script>   
+</body>
+</html>
