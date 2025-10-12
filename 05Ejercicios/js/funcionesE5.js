@@ -28,11 +28,13 @@ function calcularPorcentaje(){
     const porcentajeH = (parseoH * 100) / totalAmulnos;
     const porcentajeM = (parseoM * 100) / totalAmulnos;
 
-    alert("El porcentaje de alumnos hombres es: " + porcentajeH.toFixed(2) + "%\n" + "El porcentaje de alumnas mujeres es: " + porcentajeM.toFixed(2) + "%");
-
+    document.getElementById("porcentajeH").value = porcentajeH.toFixed(2) + "%";
+    document.getElementById("porcentajeM").value = porcentajeM.toFixed(2) + "%";
 }
 
 function Borrar(){
     document.getElementById("alumnosH").value = "";
     document.getElementById("alumnosM").value = "";
+    document.gerElementById("porcentajeH").value = "";
+    document.getElementById("porcentajeM").value = "";
 }
