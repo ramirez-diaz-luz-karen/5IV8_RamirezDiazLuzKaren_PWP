@@ -9,37 +9,37 @@
     <div class="container">
         <form method="post" name="formulario" action=" ">
             <label for="">
-                <h1>Formulario para saber la calificación total en la calse de algoritmia</h1>    
+                <h1>Formulario para saber el porcentaje de hombres y mujeres por grupo:</h1>    
                 <br>
                 <div class="container-table">
                     <table class="table">
                         <tr>
-                            <td>Ingresa tu promedio total de calificaciones parciales:</td>
+                            <td>Ingresa el numero de alumnos hombres:</td>
                             <td>
-                                <input type="text" id="calificacionP" name="calificacionParcial" onkeypress="return validarC(event)">
+                                <input type="text" id="alumnosH" name="alumnosHombres" onkeypress="return ">
                             </td>
                         </tr>
                         <tr>
-                            <td>Ingresa tu calidicacion del examen final:</td>
+                            <td>Ingresa el numero de alumnos mujeres:</td>
                             <td>
-                                <input type="text" id="examenF" name="examenFinal" onkeypress="return validarC(event)">
+                                <input type="text" id="alumnosM" name="alumnosMujeres" onkeypress="return ">
                             </td>
                         </tr>
                         <tr>
-                            <td>Ingresa la calificacion de tu trabajo final:</td>
                             <td>
-                                <input type="text" id="trabajoF" name="trabajoFinal" onkeypress="return validarC(event)">
-                            </td>
-                        </tr>
-                        <tr>                           
-                            <td>
-                                <input type="button" value="Calcular Calificacion Final" name="enviar" onclick="calcuarCalificacionFinal()">
+                                <input type="button" value="Calcular Porcentaje" name="enviar" onclick="">
                             </td>
                         </tr>
                         <tr>
-                            <td>Su calificacion final de algoritmia es de:</td>
+                            <td>El porcentaje de hombres en el salon es de:</td>
                             <td>
-                                <input type="text" id="calificacionF" name="calificacionFinal" readonly="readonly" class="input_text">
+                                <input type="text" id="porcentajeH" name="porcentajeHombres" readonly="readonly" class="input_text">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>El porcentaje de mujeres en el salon es de:</td>
+                            <td>
+                                <input type="text" id="porcentajeM" name="porcentajeMujeres" readonly="readonly" class="input_text">
                             </td>
                         </tr>
                         <tr>
@@ -52,6 +52,6 @@
             </label>
         </form>      
     </div>
- <script src="./js/funcionesE4.js"></script>   
+ <script src="./js/funcionesE5.js"></script>   
 </body>
 </html>
