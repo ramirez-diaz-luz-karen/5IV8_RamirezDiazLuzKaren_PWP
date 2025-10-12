@@ -33,8 +33,8 @@ function calcularPorcentaje(){
 }
 
 function Borrar(){
-    document.getElementById("alumnosH").value = "";
-    document.getElementById("alumnosM").value = "";
-    document.gerElementById("porcentajeH").value = "";
-    document.getElementById("porcentajeM").value = "";
+  document.getElementById("alumnosH").value = "";
+  document.getElementById("alumnosM").value = "";
+  document.getElementById("porcentajeH").value = "";
+  document.getElementById("porcentajeM").value = "";
 }
