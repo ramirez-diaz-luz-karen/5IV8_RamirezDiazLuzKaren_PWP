@@ -19,6 +19,25 @@ function validarS(e){
     return true;   
 }
 
+
+function comisiones(){
+    var  valor= document.getElementsById("sueldoBase").value;
+    var valor2 = document.getElementsById("comisionesTotales").value;
+
+    var parseo = parseFloat(valor);
+    alert(parseo);
+    var parseo2 = parseFloat(valor2);
+    alert(parseo2);
+
+    var comision = (parseo2 * 0.01);
+    alert(comision);
+
+    var total = comision + parseo;
+    alert(total);
+
+    document.getElementById("sueldoT").value = "$ " + total; //LIMITE A 2 DECIMALES
+}
+
 function Borrar(){
     document.getElementById("cantidadi").value = "";
     document.getElementById("salodoi").value = "";
