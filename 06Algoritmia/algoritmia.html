@@ -16,10 +16,8 @@
             <input type="text" class="Problema-input" placeholder="Ingresa las palabras separadas por un espacio:" id="p1-input">
             <button type="button" class="problema-button" style="margin-top: 1rem;" onclick="problema1()">Invertir palabras</button>
             <pre class="Problema-output" id="p1-output">Esperando datos...</pre>
-            <input type="text" name="resultadoCadena" id="resultadoC" readonly="readonly" class="input_text">
         </div>
         <br>
-        <input type="button" value="Borrar Datos" name="borrar" onclick="Borrar1()">
         </div>
     </div>
 
@@ -98,7 +96,7 @@
             </table>
 
            </div>
-            <button type="button" class="problema-button" style="margin-top: 1rem;" oneclick="">Calcular Vector</button>
+            <button type="button" class="problema-button" style="margin-top: 1rem;" onclick="">Calcular Vector</button>
             <pre class="Problema-output" id="p2-output">Esperando datos...</pre>
         </div>
         </div>
@@ -111,19 +109,13 @@
             <h2 class="problema-title">
                 Problema 3
             </h2>
-            <h3>Dada una lista de palabras, encontrar la palabra que mas numero de caracteres unicos tenga
-                <br>
-                por ejemplo: CASA = 3(c, a, s), PERRO = 4(p, e, r, o)
-                <br>
-                considera solamente el alfabeto A-Z, en mayusculas, las palabaras ingresadas deberan estar separadas por una coma, no se aceptan espacios
+            <h3>
+                Dada una lista de palabras, encontrar la palabra que mas numero de caracteres unicos tenga
             </h3>
-
         <div class="problema-content">
-            <input type="text"
-            class="Problema-input"
-            placeholder="Ingresa las palabras separadas por una coma:"
-            id="p3-input">
-            <button type="button" class="problema-button" style="margin-top: 1rem;" oneclick=""> Calcular palabras</button>
+            <p>Ingresa una lista de palabras en mayuscula y separadas por comas</p>
+            <input type="text" class="Problema-input" placeholder="Ingresa las palabras separadas por una coma:" id="p3-input" onkeypress="return validar3(event)">
+            <button type="button" class="problema-button" style="margin-top: 1rem;" onclick="problema3()"> Calcular palabras</button>
             <pre class="Problema-output" id="p3-output">Esperando datos...</pre>
         </div>
         </div>
