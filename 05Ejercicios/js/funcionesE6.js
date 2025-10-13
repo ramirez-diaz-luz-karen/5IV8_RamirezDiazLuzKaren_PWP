@@ -24,41 +24,35 @@ function calcularEdad() {
         return;
       }
 
-      document.getElementById('resultado').textContent = `Edad calculada: ${edad} años.`;
+      document.getElementById('resultado').value = `Edad: ${edad} años.`;
     }
 
 
 function mostrarEdad() {
   const edad = parseInt(document.getElementById('edad').value);
-  if (isNaN(edad) || edad < 0 || edad > 120) {
-    alert("Edad inválida. Ingresa un número entre 0 y 120.");
+  const resultado = document.getElementById('resultado');
+  const gif = document.getElementById('container-gif');
+
+  if (isNaN(edad) || edad < 7 || edad > 120) {
+    alert("Edad inválida. Ingresa un número entre 7 y 120.");
+    resultado.value = "";
+    gif.style.display = "none";
     return;
   }
 
-  const resultado = document.getElementById('resultado');
-  const gif = document.getElementById('gifContainer');
-
-  resultado.textContent = `Edad ingresada: ${edad} años.`;
-  resultado.classList.remove('oculto');
-  resultado.classList.add('visible', 'desvanecer');
-
-  gif.classList.remove('oculto');
-  gif.classList.add('visible', 'desvanecer');
+  resultado.value = `${edad} años.`;
+  gif.style.display = "block";
 
   setTimeout(() => {
-    resultado.classList.remove('visible', 'desvanecer');
-    resultado.classList.add('oculto');
-    gif.classList.remove('visible', 'desvanecer');
-    gif.classList.add('oculto');
-    resultado.textContent = "";
+    resultado.value = "";
+    gif.style.display = "none";
   }, 5000);
 }
 
-
 function Borrar() {
-    document.formulario.reset();
-    document.getElementById('campoFecha').classList.add('oculto');
-    document.getElementById('campoEdad').classList.add('oculto');
-    document.getElementById('resultado').innerHTML = "";
-    document.getElementById('gifContainer').classList.add('oculto');
+  document.getElementById('fecha').value = "";
+  document.getElementById('edad').value = "";
+  document.getElementById('resultado').value = "";
+  document.getElementById('container-gif').style.display = "none";
 }
+
