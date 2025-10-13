@@ -1,27 +1,30 @@
+function validar1(e) {
+    const input = e.target;
+    const valor = input.value;
+    const teclado = (document.all) ? e.keyCode : e.which;
+
+    if (teclado === 8) return true;
+
+    const codigo = String.fromCharCode(teclado);
+
+    if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]$/.test(codigo)) return false;
+
+    if (valor.endsWith(" ") && codigo === " ") return false;
+
+    return true;
+}
 
 function problema1() {
-    const input = document.getElementById("p1-input");
-    const cadena = input.value.trim();
+    const cadena = document.getElementById("p1-input").value.trim();
 
-   
-    if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+$/.test(cadena)) {
-        document.getElementById("resultadoC").value = "Solo se permiten letras y espacios.";
+    if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑ]+( [a-zA-ZáéíóúÁÉÍÓÚñÑ]+)*$/.test(cadena)) {
+        document.getElementById("p1-output").textContent = "Entrada inválida. Usa solo letras y separa las palabras con un solo espacio.";
         return;
     }
 
-    if (cadena.includes("  ")) {
-        document.getElementById("resultadoC").value = "No se permiten espacios múltiples entre palabras.";
-        return;
-    }
-
-    const palabras = cadena.split(" ").filter(p => p.length > 0);
-    if (palabras.length < 2) {
-        document.getElementById("resultadoC").value = "Debes ingresar al menos dos palabras.";
-        return;
-    }
-
+    const palabras = cadena.split(" ");
     const resultado = palabras.reverse().join(" ");
-    document.getElementById("resultadoC").value = resultado;
+    document.getElementById("p1-output").textContent = resultado;
 }
 
 
