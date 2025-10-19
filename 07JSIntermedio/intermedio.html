@@ -5,38 +5,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ejercicios intermedios</title>
 </head>
+<body>
+<h1>Ejercicios Nivel Intermedio</h1>
 <div class="container">
     <div class="ej1">
-        Deberán de crear un formulario en el cual se deben de leer 2 números, si son iguales que los múltiple, si el primero mayor que el segundo que los reste y sino que los sume. 
-
-        <div class="formulario">
-            <h3>Ingresa el primer nuúmero</h3>
-            <input type="text" name="numero 1" id="num1" onclick="">
-            <h3>Ingrese el segundo numero</h3>
-            <input type="text" name="numero 2" id="num2" onclick="">
-
+        <div class="ej-title">
+            <h2>Ejercicio 1</h2>
+            <h3>Deberán de crear un formulario en el cual se deben de leer 2 números, si son iguales que los múltiple, si el primero mayor que el segundo que los reste y sino que los sume. </h3>
         </div>
+        <div class="ej-desarrollo">
+            <form method="post" name="formulario" action=" ">
+               <h3>Ingresa el primer nuúmero</h3>
+                <input type="text" name="numero 1" id="num1" onkeypress="">
+                 <h3>Ingrese el segundo numero</h3>
+                <input type="text" name="numero 2" id="num2" onkeypress="">
+                <input type="button" value="operación" class="operation-button" onclick="">
+                <pre class="Problema-output" id="ej1-output">Esperando datos...</pre>
+                <input type="button" value="Borrar Datos" name="borrar" onclick="Borrar()">
+            </form>
+        </div>
+
+       
     </div>
     <div class="ej2">
-Leer tres números diferentes e imprimir el numero mayor de los 3.
-
+        <div class="ej-title">
+            <h2>Ejercicio 2</h2>
+            <h3>Leer tres números diferentes e imprimir el numero mayor de los 3.</h3>
+        </div>
+        <div class="ej-desarrollo">
+            <form method="post" name="formulario" action=" ">
+                <h3>Ingresa el primer nuúmero:</h3>
+                <input type="text" name="numero 1" id="num1" onkeypress="">
+                <h3>Ingrese el segundo numero:</h3>
+                <input type="text" name="numero 2" id="num2" onkeypress="">
+                <h3>Ingrese el segundo numero:</h3>
+                <input type="text" name="numero 3" id="num3" onkeypress="">
+                <input type="button" value="CALCULAR MAYOR" class="operation-button" onclick="">
+                <pre class="Problema-output" id="ej2-output">Esperando datos...</pre>
+                <input type="button" value="Borrar Datos" name="borrar" onclick="Borrar()">
+            </form>
+        </div>
     </div>
     <div class="ej3">
-Determinar la cantidad de dinero que recibe un trabajador por concepto de hrs extra trabajadas dentro de la empresa, sabiendo que cuando las horas de trabajo exceden de 40, el resto se consideran hrs extra, y que estas se pagan al doble de una hora normal, cuando no exceden de 8, si las hrs extra exceden de 8 se pagan las primeras 8 al doble y el resto al triple.
-
+        <div class="ej-title">
+            <h2>Ejercicio 3</h2>
+            <h3>Determinar la cantidad de dinero que recibe un trabajador por concepto de hrs extra trabajadas dentro de la empresa, sabiendo que cuando las horas de trabajo exceden de 40, el resto se consideran hrs extra, y que estas se pagan al doble de una hora normal, cuando no exceden de 8, si las hrs extra exceden de 8 se pagan las primeras 8 al doble y el resto al triple.</h3>
+        </div>
+        <div class="ej-desarrollo">
+            <form method="post" name="formulario" action=" ">
+                <h3>Ingresa el valor de tu salario:</h3>
+                <input type="text" name="salario base" id="salariob" onkeypress="">
+                <h3>Ingrese la cantidad de horas extras trabajadas:</h3>
+                <input type="text" name="horas extra" id="horasextra" onkeypress="">
+                <input type="button" value="calcular pago" class="operation-button" onclick="">
+                <pre class="Problema-output" id="ej3-output">Esperando datos...</pre>
+                <input type="button" value="Borrar Datos" name="borrar" onclick="Borrar()">            
+            </form>
+        </div>
     </div>
     <div class="ej4">
-Calcular la utilidad de un trabajador que recibe le reparto de utilidades anual, si este se le asigna un porcentaje de acuerdo a su salario mensual y depende de la antigüedad de la empresa
-menos de 1 año 5%
-1 a 2 años 7%
-2 a 5 años 10 %
-5 a 10 años 15%
-mas de 10 20%
+        <div class="ej-title">
+            <h2>Ejercicio 4</h2>
+            <h3>Calcular la utilidad de un trabajador que recibe le reparto de utilidades anual, si este se le asigna un porcentaje de acuerdo a su salario mensual y depende de la antigüedad de la empresa
+    menos de 1 año 5%
+    1 a 2 años 7%
+    2 a 5 años 10 %
+    5 a 10 años 15%
+    mas de 10 20%</h3>
+        </div>
+        <div class="ej-desarrollo">
+            <form method="post" name="formulario" action=" ">
+                <h3>Ingresa tu salario mensual:</h3>
+                <input type="text" name="salario mensual" id="salariom" onkeypress="">
+                <h3>Años de antiguedad en la empresa:</h3>
+                <input type="text" name="numero 2" id="num2" onkeypress="">
+                <input type="button" value="operación" class="operation-button" onclick="">
+                <pre class="Problema-output" id="ej1-output">Esperando datos...</pre>
+                <input type="button" value="Borrar Datos" name="borrar" onclick="Borrar()">
+            </form>
+        </div>
     </div>
-
-
 </div>
-<body>
-    
 </body>
 </html>
