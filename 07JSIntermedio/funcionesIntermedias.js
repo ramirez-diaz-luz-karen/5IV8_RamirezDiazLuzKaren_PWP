@@ -34,8 +34,7 @@ console.log(`Esta suma es de: ${suma(5,3)}` );
 const funcionFlecha = (n1, n2) => n1 + n2;
 console.log(`Esta suma es de: ${suma(5,3)}`);
 */
-
-const razasDePerros = [
+/* const razasDePerros = [
     "Pastor Alemán",
     "Labrador Retriever",
     "Bulldog Francés",
@@ -44,7 +43,8 @@ const razasDePerros = [
     "Dalmata",
     "Salchicha",
     "Pug",
-];
+];*/
+
 
 //Formas de recorrer e imprimir un arreglo
 //for
@@ -96,7 +96,7 @@ if(razasDePerros.find(raza=> raza ==="Chihuahua")){
 
 //FINDINDEX -> Permite realizar una busqueda de un elemento dentro del arreglo, si lo encuentra, regresa el indice del elemento, sino regresa un -1, esta funcion es particularmente util cuando necesitamos modificar o eliminar de un arreglo original, dentro de una copia del mismo
 
-const indiceChihuahua  = razasDePerros.findIndex(raza => raza == "Chihuahua");
+/* const indiceChihuahua  = razasDePerros.findIndex(raza => raza == "Chihuahua");
 console.log(indiceChihuahua);
 
 if(indiceChihuahua > -1){
@@ -106,4 +106,5 @@ if(indiceChihuahua > -1){
     razasDePerros[indiceChihuahua] += "(Es una raza de perros chiquita y chillona)";
     console.log(razasDePerros[indiceChihuahua]);
     console.log(razasDePerros);
-}
+}*/
+
