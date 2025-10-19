@@ -219,9 +219,77 @@ function evaluar3(e){
     return true;
 }
 
-function pagoExtra(){
-    var salariob = document.getElementsById("salariob").value;
-    var horasextra = document.getElementById("horasextra").value;
+function ejercicio3(){
+    const salariob = document.getElementById("salariob").value;
+    const horasextra = document.getElementById("horasextra").value;
 
-    
+    const salario = parseFloat(salariob);
+    const horas = parseFloat(horasextra);
+    let resultado = "";
+
+    if (isNaN(salario) || isNaN(horas)) {
+        resultado = "Ingresa valores numéricos válidos.";
+    } else if (horas <= 8) {
+        const pago = horas * (salario * 2);
+        resultado = "Pago por horas extra: $" + pago.toFixed(2);
+    } else {
+        const pagoDoble = 8 * (salario * 2);
+        const pagoTriple = (horas - 8) * (salario * 3);
+        const pagoTotal = pagoDoble + pagoTriple;
+        resultado = "Pago por horas extra: $" + pagoTotal.toFixed(2);
+    }
+
+    document.getElementById("ej3-output").textContent = resultado;
+}
+
+function Borrar3(){
+    document.getElementById("salariob").value = "";
+    document.getElementById("horasextra").value = "";
+    document.getElementById("ej3-output").textContent = "Esperando datos...";
+}
+
+function evaluar4(e){
+    var teclado = (document.all)? e.keyCode : e.which;
+    const input = e.target;
+    const valor = input.value;
+    const codigo = String.fromCharCode(teclado);
+
+    if (teclado === 8) return true;
+    if (!/[0-9]/.test(codigo)) return false;
+
+    return true;
+}
+
+function ejercicio4() {
+    const años = document.getElementById("años").value;
+    const salariomes = document.getElementById("salariom").value;
+
+    const antiguedad = parseFloat(años);
+    const salariom = parseFloat(salariomes);
+    let resultado = "";
+
+    if (antiguedad < 1) {
+        const pago = 12 * (salariom * 0.05);
+        resultado = "El pago de su utilidad será de: $" + pago.toFixed(2);
+    } else if (antiguedad >= 1 && antiguedad < 2) {
+        const pago = 12 * (salariom * 0.07);
+        resultado = "El pago de su utilidad será de: $" + pago.toFixed(2);
+    } else if (antiguedad >= 2 && antiguedad < 5) {
+        const pago = 12 * (salariom * 0.10);
+        resultado = "El pago de su utilidad será de: $" + pago.toFixed(2);
+    } else if (antiguedad >= 5 && antiguedad <= 10) {
+        const pago = 12 * (salariom * 0.15);
+        resultado = "El pago de su utilidad será de: $" + pago.toFixed(2);
+    } else if (antiguedad > 10) {
+        const pago = 12 * (salariom * 0.20);
+        resultado = "El pago de su utilidad será de: $" + pago.toFixed(2);
+    }
+
+    document.getElementById("ej4-output").textContent = resultado;
+}
+
+function Borrar4(){
+    document.getElementById("salariom").value = "";
+    document.getElementById("años").value = "";
+    document.getElementById("ej4-output").textContent = "Esperando datos...";
 }
