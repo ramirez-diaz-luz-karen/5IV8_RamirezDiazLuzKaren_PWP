@@ -108,3 +108,120 @@ if(indiceChihuahua > -1){
     console.log(razasDePerros);
 }*/
 
+function evaluar1(e){
+    var teclado = (document.all)? e.keyCode : e.which;
+    const input = e.target;
+    const valor = input.value;
+    const codigo = String.fromCharCode(teclado);
+
+    if (teclado === 8) return true;
+    if (!/[0-9\.\-]/.test(codigo)) return false;
+    if (codigo === '.' && valor.includes('.')) return false;
+    if (codigo === '-') {
+        if (valor.includes('-')) return false;
+        if (valor.length > 0) return false;
+    }
+
+    return true;
+}
+
+function ejercicio1() {
+    var num1 = document.getElementById("num1-ej1").value;
+    var num2 = document.getElementById("num2-ej1").value;
+
+    var parseo1 = parseFloat(num1);
+    var parseo2 = parseFloat(num2);
+    var resultado = "";
+
+    if (isNaN(parseo1) || isNaN(parseo2)) {
+        resultado = "Por favor ingresa dos números válidos.";
+    } else if (parseo1 === parseo2) {
+        resultado = "Son iguales. Multiplicación: " + (parseo1 * parseo2);
+    } else if (parseo1 > parseo2) {
+        resultado = "El primero es mayor. Resta: " + (parseo1 - parseo2);
+    } else {
+        resultado = "El segundo es mayor. Suma: " + (parseo1 + parseo2);
+    }
+
+    document.getElementById("ej1-output").textContent = resultado;
+}
+
+function Borrar1() {
+    document.getElementById("num1-ej1").value = "";
+    document.getElementById("num2-ej1").value = "";
+    document.getElementById("ej1-output").textContent = "Esperando datos...";
+}
+
+
+function evaluar2(e){
+    const teclado = (document.all) ? e.keyCode : e.which;
+    const input = e.target;
+    const valor = input.value;
+    const codigo = String.fromCharCode(teclado);
+
+    if (teclado === 8) return true;
+
+    if (codigo === '-') {
+        if (valor.includes('-')) return false;
+        if (valor.length > 0) return false;
+        return true;
+    }
+
+    if (codigo === '.') {
+        if (valor.includes('.')) return false;
+        return true;
+    }
+
+    if (!/[0-9]/.test(codigo)) return false;
+
+    return true;
+}
+
+function ejercicio2(){
+    var num1 = document.getElementById("num1-ej2").value;
+    var num2 = document.getElementById("num2-ej2").value;
+    var num3 = document.getElementById("num3-ej2").value;
+    var resultado = "";
+
+    const parseo1 = parseFloat(num1);
+    const parseo2 = parseFloat(num2);
+    const parseo3 = parseFloat(num3);
+
+    if (parseo1 === parseo2 || parseo1 === parseo3 || parseo2 === parseo3) {
+        resultado = "Los números no deben repetirse. Ingresa tres valores distintos.";
+    } else if (parseo1 > parseo2 && parseo1 > parseo3) {
+        resultado = "El número " + parseo1 + " es el mayor.";
+    } else if (parseo2 > parseo1 && parseo2 > parseo3) {
+        resultado = "El número " + parseo2 + " es el mayor.";
+    } else {
+        resultado = "El número " + parseo3 + " es el mayor.";
+    }
+
+    document.getElementById("ej2-output").textContent = resultado;
+}
+
+function Borrar2(){
+    document.getElementById("num1-ej2").value = "";
+    document.getElementById("num2-ej2").value = "";
+    document.getElementById("num3-ej2").value = "";
+    document.getElementById("ej2-output").textContent = "Esperando datos...";
+}
+
+function evaluar3(e){
+    var teclado = (document.all)? e.keyCode : e.which;
+    const input = e.target;
+    const valor = input.value;
+    const codigo = String.fromCharCode(teclado);
+
+    if (teclado === 8) return true;
+    if (!/[0-9]/.test(codigo)) return false;
+
+    return true;
+}
+
+function pagoExtra(){
+    var salariob = document.getElementsById("salariob").value;
+    var horasextra = document.getElementById("horasextra").value;
+
+    
+}

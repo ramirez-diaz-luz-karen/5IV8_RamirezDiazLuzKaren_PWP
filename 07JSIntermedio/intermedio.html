@@ -16,16 +16,14 @@
         <div class="ej-desarrollo">
             <form method="post" name="formulario" action=" ">
                <h3>Ingresa el primer nuúmero</h3>
-                <input type="text" name="numero 1" id="num1" onkeypress="">
+                <input type="text" name="numero 1" id="num1-ej1" onkeypress="return evaluar1(event)">
                  <h3>Ingrese el segundo numero</h3>
-                <input type="text" name="numero 2" id="num2" onkeypress="">
-                <input type="button" value="operación" class="operation-button" onclick="">
+                <input type="text" name="numero 2" id="num2-ej1" onkeypress="return evaluar1(event)">
+                <input type="button" value="operación" class="operation-button" onclick="ejercicio1()">
                 <pre class="Problema-output" id="ej1-output">Esperando datos...</pre>
-                <input type="button" value="Borrar Datos" name="borrar" onclick="Borrar()">
+                <input type="button" value="Borrar Datos" name="borrar" onclick="Borrar1()">
             </form>
         </div>
-
-       
     </div>
     <div class="ej2">
         <div class="ej-title">
@@ -33,16 +31,17 @@
             <h3>Leer tres números diferentes e imprimir el numero mayor de los 3.</h3>
         </div>
         <div class="ej-desarrollo">
-            <form method="post" name="formulario" action=" ">
-                <h3>Ingresa el primer nuúmero:</h3>
-                <input type="text" name="numero 1" id="num1" onkeypress="">
-                <h3>Ingrese el segundo numero:</h3>
-                <input type="text" name="numero 2" id="num2" onkeypress="">
-                <h3>Ingrese el segundo numero:</h3>
-                <input type="text" name="numero 3" id="num3" onkeypress="">
-                <input type="button" value="CALCULAR MAYOR" class="operation-button" onclick="">
-                <pre class="Problema-output" id="ej2-output">Esperando datos...</pre>
-                <input type="button" value="Borrar Datos" name="borrar" onclick="Borrar()">
+            <form method="post" name="formulario" action="">
+            <h3>Ingresa el primer número:</h3>
+                <input type="text" id="num1-ej2" onkeypress="return evaluar2(event)">
+                <h3>Ingresa el segundo número:</h3>
+                <input type="text" id="num2-ej2" onkeypress="return evaluar2(event)">
+                <h3>Ingresa el tercer número:</h3>
+                <input type="text" id="num3-ej2" onkeypress="return evaluar2(event)">
+                <br><br>
+                <input type="button" value="Calcular mayor" onclick="ejercicio2()">
+                <pre id="ej2-output">Esperando datos...</pre>
+                <input type="button" value="Borrar Datos" onclick="Borrar2()">
             </form>
         </div>
     </div>
@@ -82,4 +81,5 @@
     </div>
 </div>
 </body>
+<script src="funcionesIntermedias.js"></script>
 </html>
