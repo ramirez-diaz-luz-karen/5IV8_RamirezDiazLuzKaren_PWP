@@ -9,22 +9,13 @@ var movimientos = [
 ];
 
 //vamos a crear una matriz para saber las posiciones del rompecabezas
-var matriz = [
+var rompe = [
     [1,2,3],
     [4,5,6],
     [7,8,9]
 ];
 
 //vamos a teber que crear una matriz donde tengamos las posiciones correctas
-
-
-var rompecabezas = [
-    [1,2,3],
-    [4,5,6],
-    [7,8,9]
-];
-
-
 var rompeCorrecta = [
     [1,2,3],
     [4,5,6],
@@ -79,8 +70,6 @@ function mostrarCartelGanador(){
     arreglo[][] = posicion[][]
     //intercambiar
     posicion[][] = arreglo[][]
-
-
 */
 
 function intercambiarPosicionesRompe(filaPos1, columnPos1, filaPos2, columnPos2,){
@@ -97,7 +86,6 @@ function actualizarPosicionVacia(nuevaFila, nuevaColumna){
 
     filaVacia = nuevaFila;
     columnaVacia = nuevaColumna;
-
 }
 
 
