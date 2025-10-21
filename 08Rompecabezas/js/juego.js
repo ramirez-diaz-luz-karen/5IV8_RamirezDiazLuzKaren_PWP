@@ -160,8 +160,8 @@ function intercambiarPosicionesDOM(idPieza1, idPieza2){
 
 
     //reemplazar a los padres con sus clones
-    padre1.replaceChild(clonElemento1,pieza2);
-    padre2.replaceChild(clonElemento2, pieza1);
+    padre2.replaceChild(clonElemento1,pieza2);
+    padre1.replaceChild(clonElemento2, pieza1);
 
 }
 
