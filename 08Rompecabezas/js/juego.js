@@ -155,6 +155,11 @@ function intercambiarPosicionesDOM(idPieza1, idPieza2){
     var pieza1= document.getElementById(idPieza1);
     var pieza2 = document.getElementById(idPieza2);
 
+    if (!pieza1 || !pieza2) {
+    console.warn("Una de las piezas no existe:", idPieza1, idPieza2);
+    return;
+    }
+
     //vamos a clonarlas
     var padre1 = pieza1.parentNode;
     var padre2 = pieza2.parentNode;
