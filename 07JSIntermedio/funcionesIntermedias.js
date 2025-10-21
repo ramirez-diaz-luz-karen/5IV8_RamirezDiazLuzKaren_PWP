@@ -70,7 +70,7 @@ for (const indice in razasDePerros) {
 */
 
 //forEach: itera sobre los elementos del arreglo y no devuelve nada
-//Todos los for each son funciones flechapor defecto
+//Todos los for each son funciones flecha por defecto
 //la estructura general del forEach es el siguente:
 // argumento.forEach((variable, indice, arregloOriginal) => {codigo a ejecutar});
 /*
