@@ -23,7 +23,6 @@ var rompeCorrecta = [
 ];
 
 //necesito saber las coordebadas de la pieza vacia, la que se va a mover
-
 var filaVacia = 2;
 var columnaVacia = 2;
 
@@ -36,7 +35,7 @@ function mostrarInstrucciones(instrucciones){
         
 };
 
-//esta e¿funcion se encarga de crear el componente li y agregar la lista de dichas instrucciones
+//esta funcion se encarga de crear el componente li y agregar la lista de dichas instrucciones
 
 function mostrarInstruccionesLista(instruccion, idLista){
     var ul = document.getElementById(idLista);
@@ -77,13 +76,12 @@ function intercambiarPosicionesRompe(filaPos1, columnPos1, filaPos2, columnPos2,
     var pos2 = rompe[filaPos2, columnPos2];
 
         //intercambio
-        rompe[filaPos1, columnPos1] = pos1;
-        rompe[filaPos2, columnPos2] = pos2;
+        rompe[filaPos1, columnPos1] = pos2;
+        rompe[filaPos2, columnPos2] = pos1;
 }
 
 //que se encarge de saber donde está la pieza vacia 
 function actualizarPosicionVacia(nuevaFila, nuevaColumna){
-
     filaVacia = nuevaFila;
     columnaVacia = nuevaColumna;
 }
@@ -103,7 +101,7 @@ var codigosDireccion = {
     ARRIBA : 38,
     DERECHA : 39,
     ABAJO : 40
-}; //ESFORMATO JSON
+}; ////Este es formato JSON, se parece a un diccionario en python, esta es una lista
 
 function moverEnDireccion(direccion){
     var nuevaFilaPiezaVacia;
@@ -136,7 +134,7 @@ function moverEnDireccion(direccion){
 
 }
 
-function intercambiarPosiciones(fila1, column1, fila2, column2,){
+function intercambiarPosiciones(fila1, column1, fila2, column2){
     var pieza1 = rompe[fila1, column1];
         var pieza2 = rompe[fila2, column2];
 
@@ -152,7 +150,7 @@ function intercambiarPosicionesDOM(idPieza1, idPieza2){
     var pieza1= document.getElementById(idPieza1);
     var pieza2 = document.getElementById(idPieza2);
 
-
+    //vamos a clonarlas
     var padre = elementoPieza1.parentNode;
 
     //lo clono
