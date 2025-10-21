@@ -151,17 +151,17 @@ function intercambiarPosicionesDOM(idPieza1, idPieza2){
     var pieza2 = document.getElementById(idPieza2);
 
     //vamos a clonarlas
-    var padre1 = elementoPieza1.parentNode;
-    var padre2 = elementoPieza2.parentNode;
+    var padre1 = pieza1.parentNode;
+    var padre2 = pieza2.parentNode;
 
     //lo clono
-    var clonElemento1 = elementoPieza1.cloneNode(true);
-    var clonElemento2 = elementoPieza2.cloneNode(true);
+    var clonElemento1 = pieza1.cloneNode(true);
+    var clonElemento2 = pieza2.cloneNode(true);
 
 
     //reemplazar a los padres con sus clones
-    padre1.replaceChild(clonElemento1,elementoPieza2);
-    padre2.replaceChild(clonElemento2, elementoPieza1);
+    padre1.replaceChild(clonElemento1,pieza2);
+    padre2.replaceChild(clonElemento2, pieza1);
 
 }
 
