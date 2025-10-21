@@ -179,7 +179,7 @@ function actualizarUltimoMovimiento(direccion){
         case codigosDireccion.DERECHA:
             ultimoMovimiento.textContent = "→";
             break;
-        case ultimoMovimiento.IZQUIERDA:
+        case codigosDireccion.IZQUIERDA:
             ultimoMovimiento.textContent = "←";
             break;
 
