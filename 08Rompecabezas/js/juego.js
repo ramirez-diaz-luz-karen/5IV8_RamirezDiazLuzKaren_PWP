@@ -134,7 +134,7 @@ function moverEnDireccion(direccion){
         intercambiarPosiciones(filaVacia, columnaVacia, nuevaFilaPiezaVacia, nuevaColumnaPiezaVacia);
         actualizarPosicionVacia(nuevaFilaPiezaVacia, nuevaColumnaPiezaVacia);
         //tengo que guardar el ultimo mov
-        agregarUltimoMovimiento(direccion);
+        actualizarUltimoMovimiento(direccion);
     }
 
 }
