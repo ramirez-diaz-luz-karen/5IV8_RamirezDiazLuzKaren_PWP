@@ -126,8 +126,8 @@ function moverEnDireccion(direccion){
     if(posicionValida(nuevaFilaPiezaVacia, nuevaColumnaPiezaVacia)){
         //tengo que hacer una funcion que se encargue de intercambiar las posiciones
 
-        intercambiarPosiciones(filaVacia,columnaVacia, nuevaColumnaPiezaVacia, nuevaFilaPiezaVacia);
-        actualizarPosicionVacia(nuevaColumnaPiezaVacia, nuevaFilaPiezaVacia);
+        intercambiarPosiciones(filaVacia, columnaVacia, nuevaFilaPiezaVacia, nuevaColumnaPiezaVacia);
+        actualizarPosicionVacia(nuevaFilaPiezaVacia, nuevaColumnaPiezaVacia);
         //tengo que guardar el ultimo mov
         agregarUltimoMovimiento(direccion);
     }
