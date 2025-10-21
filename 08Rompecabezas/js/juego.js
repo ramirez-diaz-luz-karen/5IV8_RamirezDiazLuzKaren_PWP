@@ -245,13 +245,9 @@ function iniciar(){
     //mezclar las piezas d
     mezclarPiezas(30);
     capturarTeclas();
-    mostrarInstrucciones(instrucciones);
-
   // Reinicia el estado visual del último movimiento
   actualizarUltimoMovimiento(null);
-
     //capturar el ultimo movimiento
-
 };
 
 iniciar();

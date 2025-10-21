@@ -137,7 +137,7 @@ li::before {
     color: #000;
 }
 
-#iniciarButton {
+#iniciarBoton {
     background-image: -webkit-linear-gradient(top, #eb94d0, #2079b0);
     background-image: -moz-linear-gradient(top, #eb94d0, #2079b0);
     background-image: -ms-linear-gradient(top, #eb94d0, #2079b0);
@@ -168,8 +168,7 @@ li::before {
     text-decoration: none;
 }
 
-#iniciarButton:hover {
-    /* background-image: #f3e6ec; */
+#iniciarBoton:hover {
     background: #2079b0;
     background-image: -webkit-linear-gradient(top, #2079b0, #eb94d0);
     background-image: -moz-linear-gradient(top, #2079b0, #eb94d0);
