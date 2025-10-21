@@ -39,6 +39,11 @@ function mostrarInstrucciones(instrucciones){
 
 function mostrarInstruccionesLista(instruccion, idLista){
     var ul = document.getElementById(idLista);
+    if (!ul) {
+        console.warn("Elemento con id '" + idLista + "' no encontrado.");
+        return; 
+    }
+
     var li = document.createElement("li");
     li.textContent = instruccion;
     ul.appendChild(li);
