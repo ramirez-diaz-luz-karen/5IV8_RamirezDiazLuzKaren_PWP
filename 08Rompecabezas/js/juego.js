@@ -58,7 +58,7 @@ function mostrarInstruccionesLista(instruccion, idLista){
 function checarSiGano(){
     for(var i = 0; i < rompeCorrecta.length; i++){
         for(var j = 0; j< rompe[i].length; j++){
-            var rompeActual = rompe[i];
+            var rompeActual = rompe[i][j];
             if(rompeActual !== rompeCorrecta[i][j]){
                 return false;
             }
@@ -85,7 +85,7 @@ function mostrarCartelGanador(){
 
 function intercambiarPosicionesRompe(filaPos1, columnPos1, filaPos2, columnPos2,){
     var pos1 = rompe[filaPos1, columnPos1];
-        var pos2 = rompe[filaPos2, columnPos2];
+    var pos2 = rompe[filaPos2, columnPos2];
 
         //intercambio
         rompe[filaPos1, columnPos1] = pos1;
@@ -201,7 +201,7 @@ function actualizarUltimoMovimiento(direccion){
 
 //poder mezclar todas las piezas
 function mezclarPiezas(veces){
-    if(veces >= 0){
+    if(veces <= 0){
         alert("Asi no se puede");
         return;
     }
@@ -220,8 +220,14 @@ function mezclarPiezas(veces){
 //necesitamos mover que teclas se estan oprimiendo
 function capturarTeclas(){
     document.body.onkeydown = (function(evento){
-        if (moverEnDireccion(evento.which === codigosDireccion.ARRIBA || evento.which === codigosDireccion.ABAJO || evento.which === codigosDireccion.DERECHA || evento.which === codigosDireccion.IZQUIERDA)){
+        if (
+            evento.which === codigosDireccion.ARRIBA ||
+            evento.which === codigosDireccion.ABAJO ||
+            evento.which === codigosDireccion.DERECHA ||
+            evento.which === codigosDireccion.IZQUIERDA
+            ) {
             moverEnDireccion(evento.which);
+
 
             //saber si gano
             var gano = checarSiGano();
