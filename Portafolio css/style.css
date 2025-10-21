@@ -157,7 +157,8 @@ body{
 #tab4:checked ~ .caja .pestaña4,
 #tab5:checked ~ .caja .pestaña5,
 #tab6:checked ~ .caja .pestaña6,
-#tab7:checked~ .caja .pestaña7{
+#tab7:checked~ .caja .pestaña7,
+#tab8:checked~ .caja .pestaña8{
     display: block;
 }
 
