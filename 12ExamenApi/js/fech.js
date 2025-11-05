@@ -1,9 +1,7 @@
-const genshinApiUrl = "https://genshin.dev";//link para la api
+const genshinApiUrl = "https://genshin.dev";
 
-//objeto donde vamos a contener los datos a mostrar
-const libro = () =>{
-
-    const perDataElements ={
+const libro = () => {
+    const perDataElements = {
         weapon: document.getElementById("personajeWeapon"),
         nation: document.getElementById("personajeNation"),
         affiliation: document.getElementById("personajeAffiliation"),
@@ -11,11 +9,8 @@ const libro = () =>{
         birthday: document.getElementById("personajeBirthday"),
         constellation: document.getElementById("personajeConstellation"),
     };
-    //referencia para poder cambiar el css con cada tipo de vision
-    let currentVision = null;
 
     const imageTemplate = "<img class='perdisplay' src='{imgSrc}' alt='perdisplay'/>";
-    //imagees para errores o loading
     const images = {
         imgPerNotFound: "./img/404.jpg",
         imgLoading: "./img/loading.jpg",
@@ -28,185 +23,173 @@ const libro = () =>{
         perSkillTalentsElement: document.getElementById("perSkillTalents"),
         perPassiveTalentsElement: document.getElementById("perPassiveTalents"),
         perConstellationsElement: document.getElementById("perConstellations"),
-        perIdElement: document.getElementById("perId")
     };
 
     const buttons = {
         all: Array.from(document.getElementsByClassName("btn")),
         search: document.getElementById("btnSearch"),
         next: document.getElementById("btnUp"),
-        previous: document.getElementById("btnDown")
+        previous: document.getElementById("btnDown"),
     };
 
     const perInput = document.getElementById("perName");
 
     const processPerVision = (perData) => {
-        let perVision = "";
-        // Utilizo la primera clase para dar el color a los contenedores de movimientos y habilidades
-        const firstClass = perData.types[0].type.name;
-
-        perData.types.forEach((perVisionData) => {
-            // Se crea una etiqueta de clases por cada elemento type del arreglo
-            perVision += `<span class="per-vision ${perVisionData.type.name}">${perVisionData.type.name}</span>`;
-        });
-        // Se quita la clase previa del contenedor de habilidades y movimientos si hay una
-        if (currentVision) {
-            containers.perSkillTalents.classList.remove(currentVision);
-            containers.perPassiveTalents.classList.remove(currentVision);
-            containers.perConstellations.classList.remove(currentVision);
-
+        if (perData.vision) {
+            const visionKey = perData.vision.toLowerCase();
+            const visionImgUrl = `https://genshin.dev/elements/${visionKey}/icon.png`;
+            containers.perVisionContainer.innerHTML = `
+                <img src="${visionImgUrl}" alt="${perData.vision}" width="32" height="32">
+                <span class="per-vision ${visionKey}">${perData.vision}</span>`;
+        } else {
+            containers.perVisionContainer.innerHTML = `<span class="per-vision">Desconocido</span>`;
         }
-        // Se agrega la clase del tipo del contenedor de habilidades y movimientos
-        containers.perSkillTalents.classList.add(firstClass);
-        containers.perPassiveTalents.classList.add(firstClass);
-        containers.perConstellations.classList.add(firstClass);
-        currentVision = firstClass;
-        // Se agregan las etiquetas creadas previamente en nuestro forEach
-        containers.perVisionContainer.innerHTML = perVision;
     };
 
-    const processPerData = (perDatas) => {
+    const processPerData = (perData) => {
+        // Weapon
+        if (perData.weapon_type) {
+            const weaponKey = perData.weapon_type.toLowerCase();
+            const weaponImgUrl = `https://genshin.dev/weapons/${weaponKey}/icon.png`;
+            perDataElements.weapon.innerHTML = `
+                <img src="${weaponImgUrl}" alt="${perData.weapon}" width="32" height="32">
+                ${perData.weapon}`;
+        } else {
+            perDataElements.weapon.innerHTML = "Desconocido";
+        }
 
-        perDatas.stats?.forEach((perData) => {
-            // Evalua el nombre de la estadística, y coloca su valor en su respectivo contenedor, y le aplica un
-            // estilo de gradiente, para hacer más visual el efecto.
-            switch (perData.stat.name) {
-                case "weapon":
-                    const weaponType = perData.weapon_type.toLowerCase();
-                    const weaponImgUrl = `https://genshin.dev/weapons/${weaponType}/icon.png`;
-                    perDataElements.weapon.innerHTML = `<img src="${weaponImgUrl}" alt="${perData.weapon}" width="32" height="32"> ${perData.weapon}`;
-                    break;
+        // Nation
+        if (perData.nation) {
+            const nationKey = perData.nation.toLowerCase().replace(/\s+/g, "-");
+            const nationImgUrl = `https://genshin.dev/nations/${nationKey}/icon.png`;
+            perDataElements.nation.innerHTML = `
+                <img src="${nationImgUrl}" alt="${perData.nation}" width="32" height="32">
+                ${perData.nation}`;
+        } else {
+            perDataElements.nation.innerHTML = "Desconocido";
+        }
 
-                case "nation":
-                    const nationKey = perData.nation.toLowerCase();
-                    const nationImgUrl = `https://genshin.dev/nations/${nationKey}/icon.png`;
-                    perDataElements.nation.innerHTML = `<img src="${nationImgUrl}" alt="${perData.nation}" width="32" height="32"> ${perData.nation}`;
-                    break;
+        // Affiliation
+        perDataElements.affiliation.innerHTML = perData.affiliation || "Desconocido";
 
-                case "affiliation":
-                    perDataElements.affiliation.innerHTML = perData.affiliation;
-                    break;
+        // Rarity
+        const starIcon = `<img src="https://img.icons8.com/ios-filled/50/000000/star--v1.png" width="20" height="20">`;
+        perDataElements.rarity.innerHTML = starIcon.repeat(perData.rarity || 0);
 
-                case "rarity":
-                    const stars = "🟆".repeat(perData.rarity);
-                    perDataElements.rarity.innerHTML = `${stars} (${perData.rarity})`;
-                    break;
+        // Birthday
+        perDataElements.birthday.innerHTML = perData.birthday !== "0000-00-00" ? perData.birthday : "Sin registro";
 
-                case "birthday":
-                    perDataElements.birthday.innerHTML = perData.birthday !== "0000-00-00"
-                            ? perData.birthday
-                            : "Sin registro";
-                    break;
-
-                case "constellation":
-                    perDataElements.constellation.innerHTML = perData.constellation;
-                    break;
-            }
-        });
+        // Constellation
+        perDataElements.constellation.innerHTML = perData.constellation || "Desconocido";
     };
 
     const processPerSkillTalents = (perData) => {
-        let perSkillTalentsContent = "";
-        perData.skillTalents?.forEach((perSkillTalents) => {
-            perSkillTalentsContent += `<li>${perSkillTalents.skillTalents.name}</li>`;
-        });
-        containers.perSkillTalentsElement.innerHTML = perSkillTalentsContent;
+        containers.perSkillTalentsElement.innerHTML = perData.skillTalents
+            ?.map((t) => `<li>${t.name}</li>`)
+            .join("") || "<li>Sin datos</li>";
     };
 
     const processPerPassiveTalents = (perData) => {
-        let perPassiveTalentsContent = "";
-        perData.passiveTalents?.forEach((perPassiveTalents) => {
-            perPassiveTalentsContent += `<li>${perPassiveTalents.passiveTalents.name}</li>`;
-        });
-        containers.perPassiveTalentsElement.innerHTML = perPassiveTalentsContent;
+        containers.perPassiveTalentsElement.innerHTML = perData.passiveTalents
+            ?.map((t) => `<li>${t.name}</li>`)
+            .join("") || "<li>Sin datos</li>";
     };
 
     const processPerConstellations = (perData) => {
-        let perConstellationsContent = "";
-        perData.constellations?.forEach((perConstellations) => {
-            perConstellationsContent += `<li>${perConstellations.constellations.name}</li>`;
-        });
-        containers.perConstellationsElement.innerHTML = perConstellationsContent;
+        containers.perConstellationsElement.innerHTML = perData.constellations
+            ?.map((c) => `<li>${c.name}</li>`)
+            .join("") || "<li>Sin datos</li>";
     };
-//cargar las imagenes
+
     const setLoading = () => {
         containers.imageContainer.innerHTML = imageTemplate.replace("{imgSrc}", images.imgLoading);
         buttons.all.forEach(button => button.disabled = true);
     };
-    // Vuelve a habilitar los botones
+
     const setLoadingComplete = () => {
-        buttons.all.forEach(button => checkDisabled(button));
+        buttons.all.forEach(button => button.disabled = false);
     };
-    
+
     const getPersonajeData = async (perName) => {
-    try {
-        const response = await fetch(`${genshinApiUrl}/characters/${perName.toLowerCase()}`);
-        if (!response.ok) throw new Error("No encontrado");
-        return await response.json();
-    } catch {
-        return { requestFailed: true };
-        }
-    };
-        .then((res) => res.json())
-        .catch((error) => ({requestFailed: true}));
-    
-    const checkDisabled = (button) => {
-        button.disabled = button.id === "btnDown" && +containers.perIdElement.value <= 1;
-    };
+  try {
+    const res = await fetch(`${genshinApiUrl}/characters/${perName.toLowerCase()}`);
+    if (!res.ok) throw new Error("No se encontró el personaje");
+    return await res.json();
+  } catch (error) {
+    return { requestFailed: true };
+  }
+};
 
     const setPersonajeData = async (perName) => {
-        if (perName) {
-            setLoading();
-
-                const perName = perDatas.name.toLowerCase();
-                const personajeImgUrl = `https://genshin.dev/characters/${perName}/portrait.png`;
-                const visionKey = perDatas.vision.toLowerCase(); 
-                const visionImgUrl = `https://genshin.dev/elements/${visionKey}/icon.png`;
-
-                containers.imageContainer.innerHTML = imageTemplate.replace("{imgSrc}", perImgUrl);            
-                
-                if (perDatas.requestFailed) {
-                // Si no se encontró el pokemon, se pone la imagen de no encontrado
-                containers.imageContainer.innerHTML = imageTemplate.replace("{imgSrc}", images.imgPerNotFound);
-            } else {
-                // Pone las imágenes del pokemon, su nombre y el ID del pokemon
-                containers.imageContainer.innerHTML = `${imageTemplate.replace("{imgSrc}", perDatas.sprites.front_default)}
-                `;
-                containers.perNameElement.innerHTML = perDatas.name;
-                containers.perIdElement.value = perDatas.id;
-                // reparte el resto de procesamientos pertinentes a cada función
-                processPerVision(perDatas);
-                processPerData(perDatas);
-                processPerSkillTalents(perDatas);
-                processPerPassiveTalents(perDatas);
-                processPerConstellations(perDatas);
-            }
-            // vuelve a habilitar los botones.
-            setLoadingComplete();
-        } else {
-            Swal.fire({
-                title: "Error!",
-                text: "Ingresa el nombre de un personaje primero",
-                icon: "error",
-                confirmButtonText: "Aceptar.",
-            });
+        if (!perName) {
+            alert("Ingresa el nombre de un personaje primero");
+            return;
         }
+
+        if (!personajes.includes(perName.toLowerCase())) {
+            alert("Personaje no válido o no encontrado.");
+            return;
+        }
+
+        setLoading();
+        const perDatas = await getPersonajeData(perName);
+
+        if (perDatas.requestFailed || perDatas.error) {
+            containers.imageContainer.innerHTML = imageTemplate.replace("{imgSrc}", images.imgPerNotFound);
+            containers.perNameElement.textContent = "No encontrado";
+            setLoadingComplete();
+            return;
+        }
+
+        const personajeImgUrl = `https://genshin.dev/characters/${perDatas.name.toLowerCase()}/portrait.png`;
+        containers.imageContainer.innerHTML = imageTemplate.replace("{imgSrc}", personajeImgUrl);
+        containers.perNameElement.textContent = perDatas.name;
+
+        processPerVision(perDatas);
+        processPerData(perDatas);
+        processPerSkillTalents(perDatas);
+        processPerPassiveTalents(perDatas);
+        processPerConstellations(perDatas);
+
+        setLoadingComplete();
     };
 
+    let personajes = [];
+    fetch(`${genshinApiUrl}/characters`)
+        .then(res => res.json())
+        .then(data => personajes = data);
+
     const triggers = () => {
-        // se le vincula la función de búsqueda al botón de buscar.
         buttons.search.onclick = () => setPersonajeData(perInput.value);
-        // se le vincula la función de búsqueda al campo de texto para buscar cuando presionan enter
+
         perInput.onkeyup = (event) => {
             event.preventDefault();
             if (event.key === "Enter") {
                 setPersonajeData(perInput.value);
             }
-        }
-        // se le vincula la función de búsqueda al arriba y abajo, estos funcionan con el ID en lugar del campo de texto.
-        buttons.next.onclick = () => setPersonajeData(+containers.perIdElement.value + 1);
-        buttons.previous.onclick = () => setPersonajeData(+containers.perIdElement.value - 1);
+        };
+
+        buttons.next.onclick = () => {
+            if (!personajes.length) return;
+            const index = personajes.indexOf(perInput.value.toLowerCase());
+            if (index < personajes.length - 1) {
+                const next = personajes[index + 1];
+                perInput.value = next;
+                setPersonajeData(next);
+            }
+        };
+
+        buttons.previous.onclick = () => {
+            if (!personajes.length) return;
+            const index = personajes.indexOf(perInput.value.toLowerCase());
+            if (index > 0) {
+                const prev = personajes[index - 1];
+                perInput.value = prev;
+                setPersonajeData(prev);
+            }
+        };
     };
+
     setLoadingComplete();
     triggers();
 };
