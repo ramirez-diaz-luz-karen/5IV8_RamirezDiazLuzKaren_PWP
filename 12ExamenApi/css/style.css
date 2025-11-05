@@ -1,0 +1,21 @@
+@font-face {
+  font-family: 'GenshinImpactDrip';
+  src: url('/12ExamenApi/fonts/Genshin Impact DRIP FONT.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GenshinImpactWenhei';
+  src: url('/12ExamenApi/fonts/HY Wenhei (zh-cn).ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.h1{
+  font-family: 'GenshinImpactDrip', sans-serif;
+}
+
+.h2 {
+  font-family: 'GenshinImpactWenhei', sans-serif;
+}
