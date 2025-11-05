@@ -155,34 +155,55 @@ const libro = () =>{
         if (perName) {
             setLoading();
 
-            const perDatas = await getPersonajeData(typeof perName === typeof "" ? perName.toLowerCase() : perName);
-            if (perDatas.requestFailed) {
+                const personajeName = perDatas.name.toLowerCase();
+                const personajeImgUrl = `https://genshin.dev/characters/${perName}/portrait.png`;
+                const visionKey = perDatas.vision.toLowerCase(); 
+                const visionImgUrl = `https://genshin.dev/elements/${visionKey}/icon.png`;
+
+                containers.imageContainer.innerHTML = imageTemplate.replace("{imgSrc}", personajeImgUrl);            if (perDatas.requestFailed) {
                 // Si no se encontró el pokemon, se pone la imagen de no encontrado
                 containers.imageContainer.innerHTML = imageTemplate.replace("{imgSrc}", images.imgPerNotFound);
             } else {
                 // Pone las imágenes del pokemon, su nombre y el ID del pokemon
                 containers.imageContainer.innerHTML = `${imageTemplate.replace("{imgSrc}", perDatas.sprites.front_default)}
                 `;
-                containers.pokemonNameElement.innerHTML = pokemonData.name;
-                containers.pokemonIdElement.value = pokemonData.id;
+                containers.perNameElement.innerHTML = perDatas.name;
+                containers.perIdElement.value = perDatas.id;
                 // reparte el resto de procesamientos pertinentes a cada función
-                processPokemonTypes(pokemonData);
-                processPokemonStats(pokemonData);
-                processPokemonAbilities(pokemonData);
-                processPokemonMoves(pokemonData);
+                processPerVision(perDatas);
+                processPperData(perDatas);
+                processPerSkillTalents(perDatas);
+                processPerPassiveTalents(perDatas);
+                processPerConstellations(perDatas);
             }
             // vuelve a habilitar los botones.
             setLoadingComplete();
         } else {
-            // Esta es la forma de utilizar SweetAlert 2, por si te interesa aprender más sobre su uso puedes revisar su
-            // sitio oficial https://sweetalert2.github.io/ pero no es necesario.
             Swal.fire({
                 title: "Error!",
-                text: "Ingresa el nombre de un pokémon primero",
+                text: "Ingresa el nombre de un personaje primero",
                 icon: "error",
                 confirmButtonText: "Aceptar.",
             });
         }
     };
 
+    const triggers = () => {
+        // se le vincula la función de búsqueda al botón de buscar.
+        buttons.search.onclick = () => setPersonajeData(personajeInput.value);
+        // se le vincula la función de búsqueda al campo de texto para buscar cuando presionan enter
+        personajeInput.onkeyup = (event) => {
+            event.preventDefault();
+            if (event.key === "Enter") {
+                setPersonajeData(personajeInput.value);
+            }
+        }
+        // se le vincula la función de búsqueda al arriba y abajo, estos funcionan con el ID en lugar del campo de texto.
+        buttons.next.onclick = () => setPersonajeData(+containers.perIdElement.value + 1);
+        buttons.previous.onclick = () => setPersonajeData(+containers.perIdElement.value - 1);
+    };
+    setLoadingComplete();
+    triggers();
 };
+
+window.onload = libro;
