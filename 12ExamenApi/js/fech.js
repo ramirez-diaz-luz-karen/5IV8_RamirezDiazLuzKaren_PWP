@@ -138,12 +138,15 @@ const libro = () =>{
         buttons.all.forEach(button => checkDisabled(button));
     };
     
-    const getPokemonData = async (pokemonName) => fetch(`${pokeApiUrl}pokemon/${pokemonName}`, {
-        method: 'GET', 
-        headers: {
-            'Content-Type': 'application/json'
-        },
-    })
+    const getPersonajeData = async (perName) => {
+    try {
+        const response = await fetch(`${genshinApiUrl}/characters/${perName.toLowerCase()}`);
+        if (!response.ok) throw new Error("No encontrado");
+        return await response.json();
+    } catch {
+        return { requestFailed: true };
+        }
+    };
         .then((res) => res.json())
         .catch((error) => ({requestFailed: true}));
     
@@ -155,12 +158,14 @@ const libro = () =>{
         if (perName) {
             setLoading();
 
-                const personajeName = perDatas.name.toLowerCase();
+                const perName = perDatas.name.toLowerCase();
                 const personajeImgUrl = `https://genshin.dev/characters/${perName}/portrait.png`;
                 const visionKey = perDatas.vision.toLowerCase(); 
                 const visionImgUrl = `https://genshin.dev/elements/${visionKey}/icon.png`;
 
-                containers.imageContainer.innerHTML = imageTemplate.replace("{imgSrc}", personajeImgUrl);            if (perDatas.requestFailed) {
+                containers.imageContainer.innerHTML = imageTemplate.replace("{imgSrc}", perImgUrl);            
+                
+                if (perDatas.requestFailed) {
                 // Si no se encontró el pokemon, se pone la imagen de no encontrado
                 containers.imageContainer.innerHTML = imageTemplate.replace("{imgSrc}", images.imgPerNotFound);
             } else {
