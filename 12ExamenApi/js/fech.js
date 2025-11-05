@@ -171,7 +171,7 @@ const libro = () =>{
                 containers.perIdElement.value = perDatas.id;
                 // reparte el resto de procesamientos pertinentes a cada función
                 processPerVision(perDatas);
-                processPperData(perDatas);
+                processPerData(perDatas);
                 processPerSkillTalents(perDatas);
                 processPerPassiveTalents(perDatas);
                 processPerConstellations(perDatas);
@@ -190,12 +190,12 @@ const libro = () =>{
 
     const triggers = () => {
         // se le vincula la función de búsqueda al botón de buscar.
-        buttons.search.onclick = () => setPersonajeData(personajeInput.value);
+        buttons.search.onclick = () => setPersonajeData(perInput.value);
         // se le vincula la función de búsqueda al campo de texto para buscar cuando presionan enter
-        personajeInput.onkeyup = (event) => {
+        perInput.onkeyup = (event) => {
             event.preventDefault();
             if (event.key === "Enter") {
-                setPersonajeData(personajeInput.value);
+                setPersonajeData(perInput.value);
             }
         }
         // se le vincula la función de búsqueda al arriba y abajo, estos funcionan con el ID en lugar del campo de texto.
