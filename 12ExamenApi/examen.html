@@ -10,38 +10,37 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="header d-flex center-flex">
+    <h1>Examen API - Jikan</h1>
+</div>
 <div class="index">
     <a href="../index.html">Regresar a index</a>
 </div>
-<div class="header d-flex center-flex">
-    <h1>Examen API - Jikan</h1>
-</div>
+<div class="total">
+
+<div class="derecha">
+
   <section class="container">
-    <div class="d-flex center-flex">
+    <div class="buscador d-flex center-flex">
       <input type="text" id="animeName" class="lcd-input" placeholder="Ingrese nombre del anime o personaje" />
       <input type="hidden" id="animeId" value="0">
       <button id="btnSearch" class="btn"><i class="fa-solid fa-magnifying-glass"></i></button>
     </div>
 
     <div id="animeDisplay" class="d-flex center-flex anime-display">
-      <img class="anime-img" src="./img/load.gif" alt="AnimeDisplay">
+      <img class="anime-img" src="./img/cartel.jpg" alt="AnimeDisplay">
     </div>
-  </section>
 
   <section id="animeData" >
-    <h3 id="animeTitle" class="center-flex"></h3>
-    <p id="animeSynopsis" class="center-flex"></p>
 
     <div class="center-flex">
-      <div>Géneros:</div>
-      <div id="animeGenres" class="anime-genres"></div>
     </div>
-
     <table class="anime-info-table">
       <thead>
-        <tr><td colspan="2">Detalles</td></tr>
+        <tr><td colspan="2"><h3 id="animeTitle"></h3></td></tr>
       </thead>
       <tbody>
+        <tr><td>Generos</td> <td><div id="animeGenres" class="anime-genres">-</div></td></tr>
         <tr><td>Tipo</td><td id="animeType">-</td></tr>
         <tr><td>Episodios</td><td id="animeEpisodes">-</td></tr>
         <tr><td>Temporada</td><td id="animeSeason">-</td></tr>
@@ -49,12 +48,28 @@
         <tr><td>Productores</td><td id="animeProducers">-</td></tr>
       </tbody>
     </table>
+  </section>
+</section>
+</div>
 
-    <div class="recommendations">
-      <h4>Recomendaciones:</h4>
+
+<div class="izquierda">
+<div class="descripcion center-flex">
+  <div class="descripcion-img">
+    <img id="animeDescriptionImg" src="./img/hoyuelo.jpg" alt="">
+  </div>
+  <div class="descripcion-text">
+    <h2>Synopsis</h2>
+      <p id="animeSynopsis" class="center-flex"></p>
+  </div>
+    </div>
+<div class="recommendations">
+      <h2>Te podria interesar:</h2>
       <ul id="animeRecommendations"></ul>
     </div>
-  </section>
+</div>
+</div>
+
 
   <script src="./js/fech.js"></script>
 </body>

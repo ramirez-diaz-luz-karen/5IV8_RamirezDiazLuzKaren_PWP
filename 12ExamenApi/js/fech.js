@@ -51,7 +51,14 @@ const app = () => {
 
     elements.imgContainer.innerHTML = imageTemplate(anime.images.jpg.image_url);
     elements.title.textContent = anime.title;
-    elements.synopsis.textContent = anime.synopsis || "Sin descripción disponible.";
+    if (anime.synopsis) {
+      elements.synopsis.textContent = anime.synopsis;
+      document.getElementById("animeDescriptionImg").src = "./img/hoyuelo.jpg";
+      document.querySelector(".descripcion").style.display = "flex";
+    } else {
+      elements.synopsis.textContent = "";
+      document.querySelector(".descripcion").style.display = "none";
+    }
     elements.genres.innerHTML = anime.genres.map(g => `<span>${g.name}</span>`).join(" ");
     elements.type.textContent = anime.type || "-";
     elements.episodes.textContent = anime.episodes || "Desconocido";
@@ -60,18 +67,41 @@ const app = () => {
     elements.producers.textContent = anime.producers.map(p => p.name).join(", ") || "Desconocidos";
 
     const recs = await getRecommendations(anime.mal_id);
-    elements.recommendations.innerHTML = recs.length
-      ? recs.map(r => `<li>${r.entry.title}</li>`).join("")
-      : "<li>No hay recomendaciones disponibles</li>";
+      if (recs.length > 0) {
+        elements.recommendations.innerHTML = recs.map(r => `<li>${r.entry.title}</li>`).join("");
+        document.querySelector(".recommendations").style.display = "flex";
+      } else {
+        elements.recommendations.innerHTML = "<li>No hay recomendaciones disponibles</li>";
+        document.querySelector(".recommendations").style.display = "none";
+      }
   };
 
   const search = async () => {
     const name = elements.input.value.trim();
-    if (!name) return alert("Ingrese el nombre de un anime o personaje.");
-
-    elements.imgContainer.innerHTML = imageTemplate("./img/loading.jpg");
+        elements.imgContainer.innerHTML = imageTemplate("./img/load.gif");
     const anime = await getAnime(name);
     await renderAnime(anime);
+    
+    if (!anime) {
+      elements.imgContainer.innerHTML = imageTemplate("./img/404.jpg");
+      elements.title.textContent = "No se encontró el anime o personaje";
+      elements.synopsis.textContent = "";
+      elements.genres.innerHTML = "";
+      elements.type.textContent = "-";
+      elements.episodes.textContent = "-";
+      elements.season.textContent = "-";
+      elements.score.textContent = "-";
+      elements.producers.textContent = "-";
+
+      // Ocultar sinopsis y recomendaciones
+      document.querySelector(".descripcion").style.display = "none";
+      document.querySelector(".recommendations").style.display = "none";
+      elements.recommendations.innerHTML = ""; // Limpiar recomendaciones anteriores
+
+      return;
+    }
+
+
   };
 
   elements.btnSearch.onclick = search;
