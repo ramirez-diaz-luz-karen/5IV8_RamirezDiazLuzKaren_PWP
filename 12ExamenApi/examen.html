@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Examen API</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <script src="https://kit.fontawesome.com/101326ea39.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Oswald:wght@400;600;700&family=Roboto:ital,wght@0,400;0,500;1,400&family=Roboto+Condensed:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="index">
+    <a href="../index.html">Regresar a index</a>
+</div>
+<div class="header d-flex center-flex">
+    <h1>Examen API - Jikan</h1>
+</div>
+  <section class="container">
+    <div class="d-flex center-flex">
+      <input type="text" id="animeName" class="lcd-input" placeholder="Ingrese nombre del anime o personaje" />
+      <input type="hidden" id="animeId" value="0">
+      <button id="btnSearch" class="btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </div>
+
+    <div id="animeDisplay" class="d-flex center-flex anime-display">
+      <img class="anime-img" src="./img/load.gif" alt="AnimeDisplay">
+    </div>
+  </section>
+
+  <section id="animeData" >
+    <h3 id="animeTitle" class="center-flex"></h3>
+    <p id="animeSynopsis" class="center-flex"></p>
+
+    <div class="center-flex">
+      <div>Géneros:</div>
+      <div id="animeGenres" class="anime-genres"></div>
+    </div>
+
+    <table class="anime-info-table">
+      <thead>
+        <tr><td colspan="2">Detalles</td></tr>
+      </thead>
+      <tbody>
+        <tr><td>Tipo</td><td id="animeType">-</td></tr>
+        <tr><td>Episodios</td><td id="animeEpisodes">-</td></tr>
+        <tr><td>Temporada</td><td id="animeSeason">-</td></tr>
+        <tr><td>Score</td><td id="animeScore">-</td></tr>
+        <tr><td>Productores</td><td id="animeProducers">-</td></tr>
+      </tbody>
+    </table>
+
+    <div class="recommendations">
+      <h4>Recomendaciones:</h4>
+      <ul id="animeRecommendations"></ul>
+    </div>
+  </section>
+
+  <script src="./js/fech.js"></script>
+</body>
+</html>

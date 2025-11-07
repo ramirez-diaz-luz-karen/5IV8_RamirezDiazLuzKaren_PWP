@@ -1,197 +1,83 @@
-const genshinApiUrl = "https://genshin.dev";
+const jikanBaseUrl = "https://api.jikan.moe/v4";
 
-const libro = () => {
-    const perDataElements = {
-        weapon: document.getElementById("personajeWeapon"),
-        nation: document.getElementById("personajeNation"),
-        affiliation: document.getElementById("personajeAffiliation"),
-        rarity: document.getElementById("personajeRarity"),
-        birthday: document.getElementById("personajeBirthday"),
-        constellation: document.getElementById("personajeConstellation"),
-    };
+const app = () => {
+  const elements = {
+    input: document.getElementById("animeName"),
+    btnSearch: document.getElementById("btnSearch"),
+    imgContainer: document.getElementById("animeDisplay"),
+    title: document.getElementById("animeTitle"),
+    synopsis: document.getElementById("animeSynopsis"),
+    genres: document.getElementById("animeGenres"),
+    type: document.getElementById("animeType"),
+    episodes: document.getElementById("animeEpisodes"),
+    season: document.getElementById("animeSeason"),
+    score: document.getElementById("animeScore"),
+    producers: document.getElementById("animeProducers"),
+    recommendations: document.getElementById("animeRecommendations")
+  };
 
-    const imageTemplate = "<img class='perdisplay' src='{imgSrc}' alt='perdisplay'/>";
-    const images = {
-        imgPerNotFound: "./img/404.jpg",
-        imgLoading: "./img/loading.jpg",
-    };
+  const imageTemplate = (src) => `<img class="anime-img" src="${src}" alt="anime">`;
 
-    const containers = {
-        imageContainer: document.getElementById("perdisplay-container"),
-        perVisionContainer: document.getElementById("perVision"),
-        perNameElement: document.getElementById("perNameResult"),
-        perSkillTalentsElement: document.getElementById("perSkillTalents"),
-        perPassiveTalentsElement: document.getElementById("perPassiveTalents"),
-        perConstellationsElement: document.getElementById("perConstellations"),
-    };
+  const getAnime = async (name) => {
+    try {
+      const res = await fetch(`${jikanBaseUrl}/anime?q=${encodeURIComponent(name)}&limit=1`);
+      const data = await res.json();
+      return data.data && data.data.length > 0 ? data.data[0] : null;
+    } catch (error) {
+      console.error("Error al obtener anime:", error);
+      return null;
+    }
+  };
 
-    const buttons = {
-        all: Array.from(document.getElementsByClassName("btn")),
-        search: document.getElementById("btnSearch"),
-        next: document.getElementById("btnUp"),
-        previous: document.getElementById("btnDown"),
-    };
+  const getRecommendations = async (id) => {
+    try {
+      const res = await fetch(`${jikanBaseUrl}/anime/${id}/recommendations`);
+      const data = await res.json();
+      return data.data?.slice(0, 5) || [];
+    } catch (error) {
+      console.error("Error al obtener recomendaciones:", error);
+      return [];
+    }
+  };
 
-    const perInput = document.getElementById("perName");
+  const renderAnime = async (anime) => {
+    if (!anime) {
+      elements.imgContainer.innerHTML = imageTemplate("./img/404.jpg");
+      elements.title.textContent = "No se encontró el anime o personaje";
+      elements.synopsis.textContent = "";
+      elements.genres.innerHTML = "";
+      return;
+    }
 
-    const processPerVision = (perData) => {
-        if (perData.vision) {
-            const visionKey = perData.vision.toLowerCase();
-            const visionImgUrl = `https://genshin.dev/elements/${visionKey}/icon.png`;
-            containers.perVisionContainer.innerHTML = `
-                <img src="${visionImgUrl}" alt="${perData.vision}" width="32" height="32">
-                <span class="per-vision ${visionKey}">${perData.vision}</span>`;
-        } else {
-            containers.perVisionContainer.innerHTML = `<span class="per-vision">Desconocido</span>`;
-        }
-    };
+    elements.imgContainer.innerHTML = imageTemplate(anime.images.jpg.image_url);
+    elements.title.textContent = anime.title;
+    elements.synopsis.textContent = anime.synopsis || "Sin descripción disponible.";
+    elements.genres.innerHTML = anime.genres.map(g => `<span>${g.name}</span>`).join(" ");
+    elements.type.textContent = anime.type || "-";
+    elements.episodes.textContent = anime.episodes || "Desconocido";
+    elements.season.textContent = anime.season || "N/A";
+    elements.score.textContent = anime.score || "N/A";
+    elements.producers.textContent = anime.producers.map(p => p.name).join(", ") || "Desconocidos";
 
-    const processPerData = (perData) => {
-        // Weapon
-        if (perData.weapon_type) {
-            const weaponKey = perData.weapon_type.toLowerCase();
-            const weaponImgUrl = `https://genshin.dev/weapons/${weaponKey}/icon.png`;
-            perDataElements.weapon.innerHTML = `
-                <img src="${weaponImgUrl}" alt="${perData.weapon}" width="32" height="32">
-                ${perData.weapon}`;
-        } else {
-            perDataElements.weapon.innerHTML = "Desconocido";
-        }
+    const recs = await getRecommendations(anime.mal_id);
+    elements.recommendations.innerHTML = recs.length
+      ? recs.map(r => `<li>${r.entry.title}</li>`).join("")
+      : "<li>No hay recomendaciones disponibles</li>";
+  };
 
-        // Nation
-        if (perData.nation) {
-            const nationKey = perData.nation.toLowerCase().replace(/\s+/g, "-");
-            const nationImgUrl = `https://genshin.dev/nations/${nationKey}/icon.png`;
-            perDataElements.nation.innerHTML = `
-                <img src="${nationImgUrl}" alt="${perData.nation}" width="32" height="32">
-                ${perData.nation}`;
-        } else {
-            perDataElements.nation.innerHTML = "Desconocido";
-        }
+  const search = async () => {
+    const name = elements.input.value.trim();
+    if (!name) return alert("Ingrese el nombre de un anime o personaje.");
 
-        // Affiliation
-        perDataElements.affiliation.innerHTML = perData.affiliation || "Desconocido";
+    elements.imgContainer.innerHTML = imageTemplate("./img/loading.jpg");
+    const anime = await getAnime(name);
+    await renderAnime(anime);
+  };
 
-        // Rarity
-        const starIcon = `<img src="https://img.icons8.com/ios-filled/50/000000/star--v1.png" width="20" height="20">`;
-        perDataElements.rarity.innerHTML = starIcon.repeat(perData.rarity || 0);
-
-        // Birthday
-        perDataElements.birthday.innerHTML = perData.birthday !== "0000-00-00" ? perData.birthday : "Sin registro";
-
-        // Constellation
-        perDataElements.constellation.innerHTML = perData.constellation || "Desconocido";
-    };
-
-    const processPerSkillTalents = (perData) => {
-        containers.perSkillTalentsElement.innerHTML = perData.skillTalents
-            ?.map((t) => `<li>${t.name}</li>`)
-            .join("") || "<li>Sin datos</li>";
-    };
-
-    const processPerPassiveTalents = (perData) => {
-        containers.perPassiveTalentsElement.innerHTML = perData.passiveTalents
-            ?.map((t) => `<li>${t.name}</li>`)
-            .join("") || "<li>Sin datos</li>";
-    };
-
-    const processPerConstellations = (perData) => {
-        containers.perConstellationsElement.innerHTML = perData.constellations
-            ?.map((c) => `<li>${c.name}</li>`)
-            .join("") || "<li>Sin datos</li>";
-    };
-
-    const setLoading = () => {
-        containers.imageContainer.innerHTML = imageTemplate.replace("{imgSrc}", images.imgLoading);
-        buttons.all.forEach(button => button.disabled = true);
-    };
-
-    const setLoadingComplete = () => {
-        buttons.all.forEach(button => button.disabled = false);
-    };
-
-    const getPersonajeData = async (perName) => {
-  try {
-    const res = await fetch(`${genshinApiUrl}/characters/${perName.toLowerCase()}`);
-    if (!res.ok) throw new Error("No se encontró el personaje");
-    return await res.json();
-  } catch (error) {
-    return { requestFailed: true };
-  }
+  elements.btnSearch.onclick = search;
+  elements.input.addEventListener("keyup", (e) => {
+    if (e.key === "Enter") search();
+  });
 };
 
-    const setPersonajeData = async (perName) => {
-        if (!perName) {
-            alert("Ingresa el nombre de un personaje primero");
-            return;
-        }
-
-        if (!personajes.includes(perName.toLowerCase())) {
-            alert("Personaje no válido o no encontrado.");
-            return;
-        }
-
-        setLoading();
-        const perDatas = await getPersonajeData(perName);
-
-        if (perDatas.requestFailed || perDatas.error) {
-            containers.imageContainer.innerHTML = imageTemplate.replace("{imgSrc}", images.imgPerNotFound);
-            containers.perNameElement.textContent = "No encontrado";
-            setLoadingComplete();
-            return;
-        }
-
-        const personajeImgUrl = `https://genshin.dev/characters/${perDatas.name.toLowerCase()}/portrait.png`;
-        containers.imageContainer.innerHTML = imageTemplate.replace("{imgSrc}", personajeImgUrl);
-        containers.perNameElement.textContent = perDatas.name;
-
-        processPerVision(perDatas);
-        processPerData(perDatas);
-        processPerSkillTalents(perDatas);
-        processPerPassiveTalents(perDatas);
-        processPerConstellations(perDatas);
-
-        setLoadingComplete();
-    };
-
-    let personajes = [];
-    fetch(`${genshinApiUrl}/characters`)
-        .then(res => res.json())
-        .then(data => personajes = data);
-
-    const triggers = () => {
-        buttons.search.onclick = () => setPersonajeData(perInput.value);
-
-        perInput.onkeyup = (event) => {
-            event.preventDefault();
-            if (event.key === "Enter") {
-                setPersonajeData(perInput.value);
-            }
-        };
-
-        buttons.next.onclick = () => {
-            if (!personajes.length) return;
-            const index = personajes.indexOf(perInput.value.toLowerCase());
-            if (index < personajes.length - 1) {
-                const next = personajes[index + 1];
-                perInput.value = next;
-                setPersonajeData(next);
-            }
-        };
-
-        buttons.previous.onclick = () => {
-            if (!personajes.length) return;
-            const index = personajes.indexOf(perInput.value.toLowerCase());
-            if (index > 0) {
-                const prev = personajes[index - 1];
-                perInput.value = prev;
-                setPersonajeData(prev);
-            }
-        };
-    };
-
-    setLoadingComplete();
-    triggers();
-};
-
-window.onload = libro;
+window.onload = app;
