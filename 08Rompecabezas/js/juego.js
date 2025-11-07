@@ -200,7 +200,7 @@ function actualizarUltimoMovimiento(direccion){
 //poder mezclar todas las piezas
 function mezclarPiezas(veces){
     if(veces <= 0){
-        alert("Asi no se puede");
+        alert("Ya se puede");
         return;
     }
 
