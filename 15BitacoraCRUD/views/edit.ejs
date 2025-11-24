@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Datos de Las Inspecciones</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Oswald:wght@400;600;700&family=Roboto:ital,wght@0,400;0,500;1,400&family=Roboto+Condensed:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+    <h1>Actualizaciones de Las Inspecciones</h1>
+    <form action="/inspecciones/update/<%= inspeccion.id %>" method="POST">
+        <label for="fecha">Fecha:</label>
+        <input type="datetime-local" id="fecha" name="fecha" 
+                value="<%= new Date(inspeccion.fecha_reporte).toISOString().slice(0,16) %>" required>
+
+        <label for="equipo">Equipo:</label>
+        <input type="number" id="equipo" name="equipo" value="<%= inspeccion.equipo_id %>" required>
+
+        <label for="sintoma">Síntoma:</label>
+        <input type="text" id="sintoma" name="sintoma" value="<%= inspeccion.sintoma %>" required>
+
+        <label for="diagnostico">Diagnóstico:</label>
+        <input type="text" id="diagnostico" name="diagnostico" value="<%= inspeccion.diagnostico %>" required>
+
+        <label for="correccion">Acción Correctiva:</label>
+        <input type="text" id="correccion" name="correccion" value="<%= inspeccion.accion_correctiva %>" required>
+
+        <label for="piezas">Piezas Reemplazadas:</label>
+        <textarea id="piezas" name="piezas"><%= inspeccion.piezas_reemplazadas %></textarea>
+
+        <label for="inactividad">Tiempo de Inactividad:</label>
+        <input type="text" id="inactividad" name="inactividad" value="<%= inspeccion.tiempo_inactividad %>" required>
+
+        <button type="submit">Actualizar Inspección</button>
+    </form>
+    <a href="/">Regresar al Formulario General</a>
+    
+</body>
+</html>

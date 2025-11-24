@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Oswald:wght@400;600;700&family=Roboto:ital,wght@0,400;0,500;1,400&family=Roboto+Condensed:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+
+    <title>Bitacora de Inspecciones Diarias</title>
+</head>
+<body>
+    <h1>Bitacora de Inspecciones Diarias</h1>
+    <form action="/inspecciones" method="POST">
+        <label for="fecha">Fecha y Hora: </label>
+        <input type="date" id="fecha" name="fecha" required>
+        <label for="equipo">Id del Equipo Afectado: </label>
+        <input type="number" id="equipo" name="equipo" required>
+        <label for="sintoma">Sintoma: </label>
+        <input type="text" id="sintoma" name="sintoma" required>
+        <label for="diagnostico">Diagnostigo: </label>
+        <input type="text" id="diagnostico" name="diagnostico" required>
+        <label for="correccion">Accion Correctiva: </label>
+        <input type="text" id="correccion" name="correccion" required>
+        <label for="piezas">Piezas Reemplazadas:</label>
+        <textarea id="piezas" name="piezas" rows="3" placeholder="Ej: 2 capacitores, 1 válvula"></textarea>
+        <label for="inactividad">Tiempo de Inactividad: </label>
+        <input type="text" id="inactividad" name="inactividad" required>
+        <button type="submit" >Registrar Inspección</button>
+    </form>
+    <ul>
+  <% inspecciones.forEach(function(inspeccion){ %>
+    <li>
+      <div class="registro">
+        <strong><%= inspeccion.fecha_reporte %></strong>  
+        — Equipo: <%= inspeccion.equipo_id %>  
+        — Síntoma: <%= inspeccion.sintoma %>  
+        — Diagnóstico: <%= inspeccion.diagnostico %>  
+        — Acción Correctiva: <%= inspeccion.accion_correctiva %>  
+        — Piezas: <%= inspeccion.piezas_reemplazadas %>  
+        — Inactividad: <%= inspeccion.tiempo_inactividad %>
+      </div>
+
+      <div class="actions">
+        <a href="/inspecciones/edit/<%= inspeccion.id %>">Editar</a>
+        <a href="/inspecciones/delete/<%= inspeccion.id %>">Eliminar</a>
+      </div>
+    </li>
+  <% }); %>
+</ul>
+</body>
+</html>
