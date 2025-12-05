@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursos del Cirsulo Infernal</title>
+</head>
+<body>
+    <main class="container">
+        <table class="table" border="1">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Docente</th>
+                </tr>
+            </thead>
+            <% 
+                if(Array.isArray(cursos) && cursos.length>0){
+            %>
+            <tbody>
+            <tr>
+
+                <%
+                    cursos.forEach(function(curso) =>{
+                %>
+                <td><%= curso.id %></td>
+                <td><%= curso.nombre || 'No aplica'%></td>
+                <td><%= curso.descripción || 'No aplica' %></td>
+                <td><%= curso.docente || 'No aplica' %></td>
+                
+            </tr> 
+                <% }); %>
+            </tbody>
+        </table>
+        <% } else{ %>
+            <div>
+                No hay cursos disponibles en este momento, existe un error al cargarlos
+            </div>
+            <p><a href="../views/bienvenida.html">Volver a Bienvenida</a></p>
+            <% } %>
+    </main>
+</body>
+</html>

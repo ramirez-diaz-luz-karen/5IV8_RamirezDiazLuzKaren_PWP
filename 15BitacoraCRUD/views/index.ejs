@@ -9,22 +9,33 @@
     <title>Bitacora de Inspecciones Diarias</title>
 </head>
 <body>
+  <% if (typeof errores !== "undefined" && errores.length > 0) { %>
+  <div style="background:#ffdddd; padding:15px; border-left:4px solid #ff0000; margin-bottom:20px;">
+      <h3 style="margin:0; color:#b30000;">Errores encontrados:</h3>
+      <ul style="margin-top:10px;">
+        <% errores.forEach(function(error) { %>
+          <li style="color:#b30000;"><%= error %></li>
+        <% }) %>
+      </ul>
+  </div>
+<% } %>
+
     <h1>Bitacora de Inspecciones Diarias</h1>
     <form action="/inspecciones" method="POST">
         <label for="fecha">Fecha y Hora: </label>
-        <input type="date" id="fecha" name="fecha" required>
+        <input type="date" id="fecha" name="fecha" >
         <label for="equipo">Id del Equipo Afectado: </label>
-        <input type="number" id="equipo" name="equipo" required>
+        <input type="number" id="equipo" name="equipo" >
         <label for="sintoma">Sintoma: </label>
-        <input type="text" id="sintoma" name="sintoma" required>
+        <input type="text" id="sintoma" name="sintoma" >
         <label for="diagnostico">Diagnostigo: </label>
-        <input type="text" id="diagnostico" name="diagnostico" required>
+        <input type="text" id="diagnostico" name="diagnostico" >
         <label for="correccion">Accion Correctiva: </label>
-        <input type="text" id="correccion" name="correccion" required>
+        <input type="text" id="correccion" name="correccion" >
         <label for="piezas">Piezas Reemplazadas:</label>
         <textarea id="piezas" name="piezas" rows="3" placeholder="Ej: 2 capacitores, 1 válvula"></textarea>
         <label for="inactividad">Tiempo de Inactividad: </label>
-        <input type="text" id="inactividad" name="inactividad" required>
+        <input type="text" id="inactividad" name="inactividad">
         <button type="submit" >Registrar Inspección</button>
     </form>
     <ul>
