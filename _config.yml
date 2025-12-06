@@ -3,5 +3,12 @@ theme: jekyll-theme-primer
 
 exclude:
   - node_modules
+  - vendor
+  - Gemfile
+  - Gemfile.lock
+  - 09Node/node_modules
+  - 16CrudSeparado/node_modules
+  - 17APICRUD/node_modules
+  - 10Postman/node_modules
   - */node_modules
-  
+
