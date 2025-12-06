@@ -1,76 +1,40 @@
-import sql from "../config/dbconfig";
+// models/partidaModel.js
+import db from "../config/dbconfig.js";
 
-class Partida {
-    constructor(partida){
-        this.resultado = partida.resultado;
-        this.jugador1_simbolo = partida.jugador1_simbolo;
-        this.jugador2_simbolo = partida.jugador2_simbolo;
-    }
+const Partida = {
+  async crear({ resultado, jugador1_simbolo, jugador2_simbolo }) {
+    const [result] = await db.query(
+      "INSERT INTO partidas (resultado, jugador1_simbolo, jugador2_simbolo, creado_en) VALUES (?, ?, ?, NOW())",
+      [resultado, jugador1_simbolo, jugador2_simbolo]
+    );
+    return { id: result.insertId, resultado, jugador1_simbolo, jugador2_simbolo };
+  },
 
-    static create(newPartida, result){
-        const query = `INSERT INTO partidas (resultado, jugador1_simbolo, jugador2_simbolo) VALUES (?, ?, ?)`;
-        const params = [newPartida.resultado, newPartida.jugador1_simbolo, newPartida.jugador2_simbolo];
+  async obtenerEstadisticas() {
+    const [rowsTotales] = await db.query(
+      `SELECT 
+          COUNT(*) AS total,
+          SUM(resultado = 'X') AS X,
+          SUM(resultado = 'O') AS O,
+          SUM(resultado = 'EMPATE') AS EMPATE
+       FROM partidas`
+    );
 
-        sql.query(query, params, (err, res)=>{
-            if(err){
-                console.log('Error al crear la partida', err);
-                result(err, null);
-                return;
-            }
-            console.log('Partida creada exitosamente',{id: res.insertId, ...newPartida});
-            result(null, {id: res.insertId, ...newPartida});
-        });
-    }
+    const [rowsUlt] = await db.query(
+      "SELECT creado_en FROM partidas ORDER BY creado_en DESC LIMIT 1"
+    );
 
-    //para obtener las estadisticas del juego
-    static obtenerEstadisticas(result){
-        sql.query(`SELECT COUNT(*) AS total FROM partidas`, (err, rowsTotal) => {
-      if (err) {
-        result(err, null);
-        return;
-      }
-      const total = HTMLTableRowElement[0].total || 0;
+    const totales = rowsTotales && rowsTotales[0] ? rowsTotales[0] : { total:0, X:0, O:0, EMPATE:0 };
+    const ultima = rowsUlt && rowsUlt[0] ? rowsUlt[0].creado_en : null;
 
-      //partidas ganadas por x
-      sql.query(`SELECT COUNT(*) AS count FROM partidas WHERE resultado = 'X'`, (errX, rowsX) => {
-        if (errX) {
-          result(errX, null);
-          return;
-        }
-        // partidas ganadas por O
-        sql.query(`SELECT COUNT(*) AS count FROM partidas WHERE resultado = 'O'`, (errO, rowsO) => {
-          if (errO) {
-            result(errO, null);
-            return;
-          }
-          // Partidas quedados en empate
-          sql.query(`SELECT COUNT(*) AS count FROM partidas WHERE resultado = 'EMPATE'`, (errE, rowsE) => {
-            if (errE) {
-              result(errE, null);
-              return;
-            }
-            // Última partida
-            sql.query(`SELECT creado_en FROM partidas ORDER BY creado_en DESC LIMIT 1`, (errUlt, rowsUlt) => {
-              if (errUlt) {
-                result(errUlt, null);
-                return;
-              }
-              const ultima = rowsUlt.length ? rowsUlt[0].creado_en : null;
-
-              result(null, {
-                total,
-                X: rowsX[0].count || 0,
-                O: rowsO[0].count || 0,
-                EMPATE: rowsE[0].count || 0,
-                ultima
-              });
-            });
-          });
-        });
-      });
-    });
-
-    }
-}
+    return {
+      total: Number(totales.total || 0),
+      X: Number(totales.X || 0),
+      O: Number(totales.O || 0),
+      EMPATE: Number(totales.EMPATE || 0),
+      ultima: ultima || null
+    };
+  }
+};
 
 export default Partida;

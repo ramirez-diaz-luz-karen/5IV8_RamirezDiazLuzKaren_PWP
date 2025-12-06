@@ -51,19 +51,27 @@ body{
 .info-presentacion p{ color: #E9F5FF; margin-bottom:8px; }
 
 .botones{ display:flex; gap:8px; margin-top:10px; }
-.boton{
-  background: var(--primario);
+.boton {
+  background-color: var(--neutro);
   color: white;
   border: none;
   padding: 10px 14px;
   border-radius: 8px;
   cursor: pointer;
   font-weight:700;
+  border: 2px solid rgba(255,255,255,0.25);
+}
+
+button:hover {
+    background-color: var(--secundario);
+    color: #E9F5FF;
 }
 .boton.secondary{
-  background: transparent;
-  color: var(--primario);
+  background-color: var(--neutro);
   border: 2px solid rgba(255,255,255,0.25);
+}
+.boton.secondary:hover{
+  background-color: var(--secundario);
 }
 
 .container{ width:100%; max-width:1100px; display:flex; gap:20px; align-items:flex-start; }
@@ -73,14 +81,18 @@ body{
   border-radius: 10px;
   padding: 12px;
 }
+#tableroGrande{ display: grid; 
+    grid-template-columns: repeat(3, auto); 
+    gap: 10px; 
+    justify-content: center; 
+}
 
 .miniTablero{
-  display:grid;
-  grid-template-columns: repeat(3, 44px);
-  gap:6px;
-  padding:8px;
-  background: linear-gradient(180deg,#fff,#f8f9fb);
-  border-radius:8px;
+  display: grid; 
+  grid-template-columns: repeat(3, 40px); 
+  gap: 4px; 
+  padding: 6px; 
+  position: relative;
 }
 .celda{
   width:44px;
@@ -88,12 +100,16 @@ body{
   display:flex;
   align-items:center;
   justify-content:center;
-  background:#ffffff;
-  color:#111;
+  background:var(--neutro);
+  color:#ffffff;
   border-radius:6px;
   font-size:20px;
   font-weight:700;
   cursor:pointer;
+}
+
+.celda:hover{
+    background-color: var(--secundario);
 }
 .overlayGanador{
   position:absolute;

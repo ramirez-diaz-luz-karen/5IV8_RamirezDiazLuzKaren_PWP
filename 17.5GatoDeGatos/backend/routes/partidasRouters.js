@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { registrarPartida, estadisticas } from "../controllers/partidasController";
+import { registrarPartida, estadisticas } from "../controllers/partidasController.js";
 
 const router = Router();
 
