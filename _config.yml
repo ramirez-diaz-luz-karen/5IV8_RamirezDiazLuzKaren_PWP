@@ -1,7 +1,10 @@
 title: "Portafolio de Karen"
 theme: jekyll-theme-primer
+
 exclude:
   - node_modules
   - vendor
   - Gemfile
   - Gemfile.lock
+  - 16CrudSeparado/node_modules
+  - 09Node/node_modules
