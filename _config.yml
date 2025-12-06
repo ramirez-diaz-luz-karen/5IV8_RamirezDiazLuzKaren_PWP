@@ -10,5 +10,5 @@ exclude:
   - 16CrudSeparado/node_modules
   - 17APICRUD/node_modules
   - 10Postman/node_modules
-  - */node_modules
+
 
