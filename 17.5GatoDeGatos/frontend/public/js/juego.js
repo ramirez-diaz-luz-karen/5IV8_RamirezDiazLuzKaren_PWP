@@ -1,8 +1,22 @@
-/* ============================================
-   CONFIG
-============================================ */
-const RUTA_API = "/api";
+// ==================== IMPORTS DE FIREBASE ====================
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
+import { getDatabase, ref, push, get } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
 
+// ==================== CONFIGURACIÓN DE FIREBASE ====================
+const firebaseConfig = {
+  apiKey: "AIzaSyAGSuziOm3zcQlbkoqtWIqZBVzJIdZo32A",
+  authDomain: "gatodegatos-74887.firebaseapp.com",
+  projectId: "gatodegatos-74887",
+  storageBucket: "gatodegatos-74887.firebasestorage.app",
+  messagingSenderId: "116854174198",
+  appId: "1:116854174198:web:3c5794830993f6030717d7",
+  measurementId: "G-TZTMDL46XS"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+
+// ==================== VARIABLES DEL JUEGO ====================
 let juegoIniciado = false;
 let jugadorActual = "X";
 let jugador1 = "X";
@@ -15,9 +29,6 @@ let tableroBloqueado = false;
 const tableroGrande = [];
 const ganadoresMini = Array(9).fill(null);
 
-/* ============================================
-   ELEMENTOS DEL DOM
-============================================ */
 const tableroEl = document.getElementById("tableroGrande");
 const estadoEl = document.getElementById("estado");
 const jugadorActualEl = document.getElementById("jugadorActual");
@@ -35,9 +46,7 @@ const ganadasOEl = document.getElementById("ganadasO");
 const empatesEl = document.getElementById("empates");
 const ultimaFechaEl = document.getElementById("ultimaFecha");
 
-/* ============================================
-   INICIAR JUEGO
-============================================ */
+// ==================== INICIALIZACIÓN ====================
 function inicializarJuego() {
     for (let i = 0; i < 9; i++) tableroGrande[i] = Array(9).fill(null);
     ganadoresMini.fill(null);
@@ -85,9 +94,7 @@ function reiniciarPartida() {
     inicializarJuego();
 }
 
-/* ============================================
-   TABLERO VISUAL
-============================================ */
+// ==================== FUNCIONES DEL TABLERO ====================
 function dibujarTablero() {
     tableroEl.innerHTML = "";
 
@@ -133,9 +140,6 @@ function dibujarTablero() {
     }
 }
 
-/* ============================================
-   LÓGICA DEL JUEGO
-============================================ */
 function hacerJugada(indMini, indCelda) {
     if (!juegoIniciado) return alert("Debes elegir primero un jugador (X u O)");
 
@@ -229,61 +233,57 @@ function actualizarEstado() {
     jugadorActualEl.textContent = juegoIniciado ? jugadorActual : "-";
 }
 
-/* ============================================
-   🔥 **GUARDAR RESULTADO EN BD**
-============================================ */
-async function guardarResultado(resultado) {
-    const payload = {
-        resultado,
-        jugador1_simbolo: jugador1,
-        jugador2_simbolo: jugador2
+// ==================== FIREBASE ====================
+function guardarResultado(resultado) {
+    const partida = {
+        resultado: resultado,
+        jugador1: jugador1,
+        jugador2: jugador2,
+        fecha: new Date().toISOString()
     };
 
-    try {
-        msgBD.textContent = "Guardando partida...";
+    msgBD.textContent = "Guardando en Firebase...";
 
-        const res = await fetch(`${RUTA_API}/registrar-partida`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(payload)
+    const partidasRef = ref(db, "partidas");
+
+    push(partidasRef, partida)
+        .then(() => {
+            msgBD.textContent = "Partida guardada correctamente";
+            obtenerEstadisticas();
+        })
+        .catch(() => {
+            msgBD.textContent = "Error guardando en Firebase";
         });
-
-        const data = await res.json().catch(() => null);
-
-        if (!res.ok) {
-            msgBD.textContent = "Error al guardar en la base de datos";
-            return alert(data?.error || "Error desconocido guardando partida");
-        }
-
-        msgBD.textContent = "Resultado guardado correctamente";
-        obtenerEstadisticas();
-
-    } catch (err) {
-        msgBD.textContent = "No se pudo conectar con la base de datos";
-        console.error(err);
-        alert("No se pudo conectar con el servidor.");
-    }
 }
 
-/* ============================================
-**OBTENER ESTADÍSTICAS**
-============================================ */
-async function obtenerEstadisticas() {
-    try {
-        msgBD.textContent = "Cargando estadísticas...";
+function obtenerEstadisticas() {
+    msgBD.textContent = "Cargando estadísticas...";
 
-        const res = await fetch(`${RUTA_API}/estadisticas`);
-        const data = await res.json();
+    const partidasRef = ref(db, "partidas");
 
-        totalPartidasEl.textContent = data.total ?? 0;
-        ganadasXEl.textContent = data.X ?? 0;
-        ganadasOEl.textContent = data.O ?? 0;
-        empatesEl.textContent = data.EMPATE ?? 0;
-        ultimaFechaEl.textContent = data.ultima ?? "-";
+    get(partidasRef)
+        .then(snapshot => {
+            const data = snapshot.val() || {};
+            const partidas = Object.values(data);
 
-        msgBD.textContent = "";
+            const total = partidas.length;
+            const ganadasX = partidas.filter(p => p.resultado === "X").length;
+            const ganadasO = partidas.filter(p => p.resultado === "O").length;
+            const empates = partidas.filter(p => p.resultado === "EMPATE").length;
 
-    } catch {
-        msgBD.textContent = "No se pudo obtener estadísticas";
-    }
+            const ultima = partidas.length ?
+                new Date(partidas[partidas.length - 1].fecha).toLocaleString()
+                : "-";
+
+            totalPartidasEl.textContent = total;
+            ganadasXEl.textContent = ganadasX;
+            ganadasOEl.textContent = ganadasO;
+            empatesEl.textContent = empates;
+            ultimaFechaEl.textContent = ultima;
+
+            msgBD.textContent = "";
+        })
+        .catch(() => {
+            msgBD.textContent = "Error cargando estadísticas";
+        });
 }

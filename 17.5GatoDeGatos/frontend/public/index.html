@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gato de Gatos</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Oswald:wght@400;600;700&family=Roboto:ital,wght@0,400;0,500;1,400&family=Roboto+Condensed:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js"></script>
+    <link rel="stylesheet" href="./css/estilos.css">
+</head>
+<body>
+<div class="container presentacion">
+        <div class="info-presentacion">
+            <h1>Gato de gatos</h1>
+            <p>Elige un simbolo para empezar a jugar.</p>
+            <div class="botones">
+                <button id="btnX" class="boton">Jugador 1: X</button>
+                <button id="btnO" class="boton">Jugador 1: O</button>
+                <button id="btnReiniciar" class="boton secondary">Reiniciar partida</button>
+            </div>
+
+            <div id="estado" class="estado">Elige un simbolo para comenzar</div>
+        </div>
+    </div>
+
+    <main class="container">
+        <section class="caja">
+            <div>
+                Jugador actual <strong id="jugadorActual">-</strong>
+            </div>
+            <div id="tableroGrande" class="tablero"></div>
+            
+        </section>
+
+        <aside>
+            <div class="marcador">
+                <h3>Marcador</h3>
+                <table>
+                    <tbody>
+                        <tr><th>Partidas totales</th><td id="totalPartidas">0</td></tr>
+                        <tr><th>Ganadas por X</th><td id="ganadasX">0</td></tr>
+                        <tr><th>Ganadas por O</th><td id="ganadasO">0</td></tr>
+                        <tr><th>Empates</th><td id="empates">0</td></tr>
+                        <tr><th>Última partida</th><td id="ultimaFecha">-</td></tr>
+                    </tbody>
+                </table>
+                <button id="bntActualizar" class="boton">Actualizar marcador</button>
+            <p id="msgBD"></p>
+            </div>
+        </aside>
+    </main>
+
+<script type="module" src="./js/juego.js"></script>
+</body>
+</html>

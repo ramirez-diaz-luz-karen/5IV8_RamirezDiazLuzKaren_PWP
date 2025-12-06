@@ -1,33 +1,33 @@
-import mysql2 from 'mysql2';
+import mysql from 'mysql2';
 import dotenv from 'dotenv';
 
-//si vamos a tener una base de datos en servidor debemos tener:
-//import {fileURLToPath} from'url';
+//si vamos a tener una bd en servidor
+//import {fileURLToPath} from 'url';
 
-//const _filname = fileURLToPath(import.meta.url);
-//const _filename = path.dirname(_filename);
+//const __filename = fileURLToPath(import.meta.url);
+//const __dirname = path.dirname(__filename);
 
-//dotenv.config({path: path.resolver(_dirname, '../.env)});
+//dotenv.config({path: path.resolve(__dirname, '../.env')});
 dotenv.config();
 
-const config = mysql2.createPool({
+const config = mysql.createPool({
 
     host: 'localhost',
     user: 'root',
     password: 'kasanajisa1.',
     database: 'curso'
 
-    //connectionLimit :10,
-    //acquireTimeout
-
+    //connectionLimit : 10,
+    //acquireTimeout : 30000,
+    //idleTimeout : 30000,
 });
 
-config.getConnection((err) =>{
+config.getConnection((err) => {
     if(err){
-        console.log('Error de conexion a la base de datos');
+        console.log('Error de conexion a la base de datos', err);
         return;
-    }
-    console.log('conexion exitosa a la base de datos');
+    }   
+    console.log('Conexion exitosa a la base de datos');
     connection.release();
 });
 
