@@ -161,7 +161,8 @@ body{
 #tab8:checked~ .caja .pestaña8,
 #tab9:checked~ .caja .pestaña9,
 #tab10:checked~ .caja .pestaña10,
-#tab11:checked~ .caja .pestaña11
+#tab11:checked~ .caja .pestaña11,
+#tab12:checked~ .caja .pestaña12
 {
     display: block;
 }
